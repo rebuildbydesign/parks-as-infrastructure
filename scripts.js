@@ -307,6 +307,8 @@ map.on('click', 'parks-risk-layer', (e) => {
     } else {
         if (feature.properties['2020_SW'] === 'X') floodplains.push('2020 STORMWATER');
         if (feature.properties['2020_SS'] === 'X') floodplains.push('2020 STORM SURGE');
+        if (feature.properties['2050_SW'] === 'X') floodplains.push('2050 STORMWATER');
+        if (feature.properties['2050_SS'] === 'X') floodplains.push('2050 STORM SURGE');
         if (feature.properties['2100_SW'] === 'X') floodplains.push('2100 STORMWATER');
         if (feature.properties['2100_SS'] === 'X') floodplains.push('2100 STORM SURGE');
     }
