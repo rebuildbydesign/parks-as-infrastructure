@@ -47,19 +47,19 @@ map.on('load', () => {
     // Add floodplain sources
     map.addSource('floodplain-2020-stormwater', {
         type: 'geojson',
-        data: '/data/2020-stormwater.json'
+        data: 'data/2020-stormwater.json'
     });
     map.addSource('floodplain-2020-stormsurge', {
         type: 'geojson',
-        data: '/data/2020-stormsurge.json'
+        data: 'data/2020-stormsurge.json'
     });
     map.addSource('floodplain-2100-stormwater', {
         type: 'geojson',
-        data: '/data/2100-stormwater.json'
+        data: 'data/2100-stormwater.json'
     });
     map.addSource('floodplain-2100-stormsurge', {
         type: 'geojson',
-        data: '/data/2100-stormsurge.json'
+        data: 'data/2100-stormsurge.json'
     });
 
     // Add floodplain layers
