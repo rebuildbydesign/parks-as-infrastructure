@@ -1,0 +1,161 @@
+/* Basic page layout */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Hyperlink styling */
+a {
+    color: #FFA500; /* Base color for hyperlinks */
+    text-decoration: underline; /* Underlined for visibility */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+a:hover {
+    color: #FFD580; /* Brighter orange close to white on hover */
+    text-decoration: none; /* Optional: Remove underline on hover for effect */
+}
+
+
+/* Sidebar styling */
+#sidebar {
+    width: 320px;
+    padding: 20px;
+    background: #000;
+    overflow-y: auto;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar h1 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #22a845;
+    font-weight: 700;
+}
+
+#sidebar p {
+    color: #fff;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+/* Sidebar info container */
+#park-info {
+    padding-top: 10px;
+}
+
+#park-info div {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #fff;
+}
+
+#park-info strong {
+    color: #22a845;
+}
+
+/* The map takes remaining space */
+#map {
+    flex: 1;
+    position: relative;
+}
+
+/* Legend styling */
+#legend {
+    position: absolute;
+    bottom: 30px;
+    right: 10px; /* Position legend on bottom right */
+    background: rgba(255, 255, 255, 0.8); /* 30% transparent white background */
+    color: #000;
+    padding: 5px 15px;
+    font-size: 0.9em;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#legend h3 {
+    margin: 4px; /* Remove extra margin from the heading */
+    padding-bottom: 5px; /* Optional: Add space below the title */
+}
+
+
+#legend div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#legend span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Info Button */
+.info-button {
+    position: fixed;
+    bottom: 30px;
+    left: 15px; /* Position info button on bottom left */
+    z-index: 9999;
+    background: #145f28; /* Green background */
+    border: none;
+    border-radius: 12px; /* Rounded rectangle */
+    width: auto; /* Automatically adjusts to text width */
+    padding: 10px 20px; /* Adds space around text for a button shape */
+    font-size: 1em; /* Adjust font size */
+    color: #fff; /* White text */
+    cursor: pointer;
+    text-align: center;
+    line-height: normal; /* Normal line-height for text alignment */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.info-button:hover {
+    background: #22a845; /* Slightly darker green on hover */
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: none;
+}
+
+.modal-content {
+    background: #073814;
+    width: 600px;
+    max-width: 90%;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+    float: right;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Ensure all sidebar feature text is uppercase */
+.sidebar-feature {
+    text-transform: uppercase;
+  }
+  
