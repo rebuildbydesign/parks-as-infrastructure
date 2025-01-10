@@ -148,8 +148,8 @@ map.on('load', () => {
         },
         filter: [
             'any',
-            ['==', ['get', '2100_SW'], 'X'], // Only parks at risk in 2100 on initial load
-            ['==', ['get', '2100_SS'], 'X']
+            ['==', ['get', '2020_SW'], 'X'], // Only parks at risk in 2100 on initial load
+            ['==', ['get', '2020_SS'], 'X']
         ]
     });
 
