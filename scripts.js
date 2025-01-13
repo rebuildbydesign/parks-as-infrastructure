@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiajAwYnkiLCJhIjoiY2x1bHUzbXZnMGhuczJxcG83YXY4c
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/j00by/cm4u8ncu3009401s0fxinaejd',
-    center: [-74.00071, 40.70420],
+    center: [-74.00620, 40.69494],
     zoom: 10.2
 });
 
@@ -36,6 +36,34 @@ document.getElementById('modalOverlay').addEventListener('click', (e) => {
 
 
 
+// INSTRUCTIONS POPUP
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('instructionsPopup');
+    const closePopup = document.getElementById('closePopup');
+
+    // Display the popup on page load
+    popup.style.display = 'flex';
+
+    // Close the popup on button click
+    closePopup.addEventListener('click', () => {
+        popup.style.display = 'none'; // Hide the popup
+    });
+
+    // Optional: Close popup by clicking outside the content area
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none'; // Hide the popup
+        }
+    });
+
+});
+
+
+
+
+
+
+
 // Keep track of the current scenario year
 let currentRisk = 2020;
 
@@ -44,6 +72,9 @@ let currentRisk = 2020;
 
 // LOADING GEOJSONS FOR FLOODPLAINS AND PARKS DATA
 map.on('load', () => {
+
+
+
     // Add floodplain sources
     map.addSource('floodplain-2020-stormwater', {
         type: 'geojson',
@@ -200,11 +231,12 @@ map.on('load', () => {
         // Update sidebar with park details
         const parkInfoContainer = document.getElementById('park-info');
         parkInfoContainer.innerHTML = `
-      <div><strong>Park Name:</strong> ${clickedFeature.properties.Park_Name || 'N/A'}</div>
-      <div><strong>Address:</strong> ${clickedFeature.properties.Address || 'N/A'}</div>
-      <div><strong>Borough:</strong> ${clickedFeature.properties.Borough || 'N/A'}</div>
-      <div><strong>HVI:</strong> ${clickedFeature.properties.HVI || 'N/A'}</div>
-      <div><strong>SVI:</strong> ${clickedFeature.properties.SVI || 'N/A'}</div>
+        <div><h2>PARK INFORMATION</h2></div>
+        <div><strong>PARK NAME:</strong> ${clickedFeature.properties.Park_Name || 'N/A'}</div>
+      <div><strong>ADDRESS:</strong> ${clickedFeature.properties.Address || 'N/A'}</div>
+      <div><strong>BOROUGH:</strong> ${clickedFeature.properties.Borough || 'N/A'}</div>
+      <div><strong>HEAT VULNERABILITY:</strong> ${clickedFeature.properties.HVI || 'N/A'}</div>
+      <div><strong>SOCIAL VULERABILITY:</strong> ${clickedFeature.properties.SVI || 'N/A'}</div>
     `;
     });
 
@@ -252,26 +284,32 @@ map.on('load', () => {
             map.setFilter('parks-risk-layer', filter);
 
 
+
+            
             // Reset sidebar with scenario-specific text
 const parkInfoContainer = document.getElementById('park-info');
 if (currentRisk === 2020) {
   parkInfoContainer.innerHTML = `
-  <div><strong style="color: #FFA500;">Today, roughly 4 in 10 parks (38%) are in flood zones under current conditions.</strong></div>
-    <div><strong>Bronx:</strong> Nearly half of all parks (about 49%) are in flood zones.</div>
-    <div><strong>Brooklyn:</strong> Around 1 in 5 parks (21%) are in flood zones.</div>
-    <div><strong>Manhattan:</strong> Over half (54%) of parks are in flood zones.</div>
-    <div><strong>Queens:</strong> About one-third (33%) of parks are in flood zones.</div>
-    <div><strong>Staten Island:</strong> Over half (56%) of parks are in flood zones.</div>
-  `;
+  <h2>PARK INFORMATION</h2>
+  <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
+  <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
+  <strong>BOROUGH:</strong> <span id="park-borough">N/A</span><br />
+  <strong>FLOOD ZONES:</strong> <span id="park-floodzones">N/A</span><br />
+  <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
+  <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
+`;
+
 } else if (currentRisk === 2100) {
   parkInfoContainer.innerHTML = `
-  <div><strong style="color: #FFA500;">By 2100, about 7 in 10 parks (69%) are projected to be in  flood zones, compared to 38% today.</strong></div>
-    <div><strong>Bronx:</strong> Over half (54%) of parks are projected to be in flood zones.</div>
-    <div><strong>Brooklyn:</strong> Nearly 70% of parks are projected to be in flood zones—a significant jump from 21%.</div>
-    <div><strong>Manhattan:</strong> Around 70% of parks may be in flood zones.</div>
-    <div><strong>Queens:</strong> Over three-quarters (78%) of parks are projected to be in flood zones.</div>
-    <div><strong>Staten Island:</strong> Nearly 80% of parks are projected to be in flood zones.</div>
-  `;
+  <h2>PARK INFORMATION</h2>
+  <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
+  <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
+  <strong>BOROUGH:</strong> <span id="park-borough">N/A</span><br />
+  <strong>FLOOD ZONES:</strong> <span id="park-floodzones">N/A</span><br />
+  <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
+  <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
+`;
+
 }
 
         });
@@ -324,7 +362,8 @@ map.on('click', 'parks-risk-layer', (e) => {
 
     // Sidebar content
     parkInfoContainer.innerHTML = `
-      <div><strong>PARK NAME:</strong> ${feature.properties.Park_Name?.toUpperCase() || 'N/A'}</div>
+    <div><h2>PARK INFORMATION</h2></div>  
+    <div><strong>PARK NAME:</strong> ${feature.properties.Park_Name?.toUpperCase() || 'N/A'}</div>
       <div><strong>ADDRESS:</strong> ${address}</div>
       <div><strong>BOROUGH:</strong> ${feature.properties.Borough?.toUpperCase() || 'N/A'}</div>
       <div><strong>FLOOD ZONES:</strong> ${floodplains.join(', ') || 'NONE'}</div>
@@ -337,11 +376,7 @@ map.on('click', 'parks-risk-layer', (e) => {
         ${feature.properties.SVI || 'N/A'}</span> out of 1
       </div>
       <div style="margin-top: 10px;">
-        <p>The flood zones analysis identifies parks at risk of stormwater and storm surge flooding under current and future climate conditions.</p>
-        <p>The Heat Vulnerability Index (HVI), from NYC DOHMH, highlights neighborhoods at greater risk of heat-related illness or death due to factors like air conditioning access and surface temperatures.</p>
-        <p>The Social Vulnerability Index (SVI), from the CDC, uses 15 indicators (e.g., income, housing, and language barriers) to measure a community's ability to prepare for and recover from disasters.</p>
-        <div style="margin-top: 10px;">
-          <a href="#" id="returnToBoroughFindings">Return to Borough Findings</a>
+          <a href="#" id="returnToBoroughFindings">Clear Selection</a>
         </div>
       </div>
     `;
@@ -350,29 +385,28 @@ map.on('click', 'parks-risk-layer', (e) => {
     document.getElementById('returnToBoroughFindings').addEventListener('click', () => {
         if (currentRisk === 2020) {
             parkInfoContainer.innerHTML = `
-            <div><strong style="color: #FFA500;">Today, roughly 4 in 10 parks (38%) are in flood zones under current conditions.</strong></div>
-    <div><strong>Bronx:</strong> Nearly half of all parks (about 49%) are in flood zones.</div>
-    <div><strong>Brooklyn:</strong> Around 1 in 5 parks (21%) are in flood zones.</div>
-    <div><strong>Manhattan:</strong> Over half (54%) of parks are in flood zones.</div>
-    <div><strong>Queens:</strong> About one-third (33%) of parks are in flood zones.</div>
-    <div><strong>Staten Island:</strong> Over half (56%) of parks are in flood zones.</div>
-            `;
+            <h2>PARK INFORMATION</h2>
+  <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
+  <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
+  <strong>BOROUGH:</strong> <span id="park-borough">N/A</span><br />
+  <strong>FLOOD ZONES:</strong> <span id="park-floodzones">N/A</span><br />
+  <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
+  <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
+`;
+
         } else if (currentRisk === 2100) {
             parkInfoContainer.innerHTML = `
-            <div><strong style="color: #FFA500;">By 2100, about 7 in 10 parks (69%) are projected to be in flood zones, compared to 38% today.</strong></div>
-    <div><strong>Bronx:</strong> Over half (54%) of parks are projected to be in flood zones.</div>
-    <div><strong>Brooklyn:</strong> Nearly 70% of parks are projected to be in flood zones—a significant jump from 21%.</div>
-    <div><strong>Manhattan:</strong> Around 70% of parks may be in flood zones.</div>
-    <div><strong>Queens:</strong> Over three-quarters (78%) of parks are projected to be in flood zones.</div>
-    <div><strong>Staten Island:</strong> Nearly 80% of parks are projected to be in flood zones.</div>
-            `;
+            <h2>PARK INFORMATION</h2>
+  <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
+  <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
+  <strong>BOROUGH:</strong> <span id="park-borough">N/A</span><br />
+  <strong>FLOOD ZONES:</strong> <span id="park-floodzones">N/A</span><br />
+  <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
+  <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
+`;
+
         }
     });
 });
-
-
-
-
-
 
 });

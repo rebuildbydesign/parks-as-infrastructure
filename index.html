@@ -11,38 +11,62 @@
 </head>
 
 <body>
+    
+    <!-- Instructions Popup -->
+    <div id="instructionsPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button id="closePopup" class="popup-close-button">&times;</button>
+            <img src="https://rebuildbydesign.github.io/atlas-of-accountability/img/rebuildbydesign.png" width="250px">
+            <h3>HOW TO USE INTERACTIVE MAP</h3>
+            <ol>
+                <li><strong>EXPLORE THE MAP:</strong> Explore the map by using your mouse to drag and zoom. Click on the green circles to learn about parks in flood risk.</li>
+                <li><strong>VIEW PARK DETAILS:</strong> When you click on a park, you'll see details like its name, location, and climate  and social vulnerablity information on the left sidebar.</li>
+                <li><strong>TOGGLE FLOOD SCENARIOS:</strong> Use the toggle in the sidebar to switch between today's flood risks (2020) and future risks (2100).</li>
+                <li><strong>LEARN MORE:</strong> Click "Methodology" bottom left for data sources and analysis details.</li>
+            </ol>
+        </div>
+    </div>
+    
+
+    
+    
+    <!-- Main Title -->
+<div id="main-title">
+    <h1>Parks as Essential Climate Infrastructure</h1>
+</div>
+
+
+
     <!-- Sidebar -->
     <div id="sidebar">
-        <h1>Parks as Essential Climate Infrastructure</h1>
-        <p>Parks can serve multiple purposes—flood protection, community recreation, improving air quality—maximizing
-            their value as multi-benefit investments. This map highlights parks in New York City as essential climate
-            infrastructure.</p>
-        <p>Click on points to view a park's climate risks and social vulnerability assessment for two scenarios: </p>
+            <p>This map highlights all city and state-owned parks in New York City as essential climate infrastructure. Parks can serve multiple purposes—flood protection, community recreation, improving air quality—maximizing their value as multi-benefit investments.</p>
+            <p>Today, roughly 4 in 10 parks (38%) are in flood zones under current conditions. By 2100, about 7 in 10 parks (69%) are projected to be in flood zones, compared to 38% today.</p>
 
         <!-- Radio Toggle for 2020 / 2100 -->
         <div>
             <label>
                 <input type="radio" name="riskYear" value="2020" checked>
-                Current Risk
+                <strong>Current Risk (2020)</strong>
             </label>
             <br>
             <label>
                 <input type="radio" name="riskYear" value="2100">
-                Future Risk
+                <strong>Future Risk (2100)</strong>
             </label>
         </div>
 
         <!-- Park info container -->
-        <div id="park-info">
-            <div><strong style="color: #FFA500;">Today, roughly 4 in 10 parks (38%) are in flood zones under current
-                    conditions.</strong>
-            </div>
-            <div><strong>Bronx:</strong> Nearly half of all parks (49%) are in flood zones.</div>
-            <div><strong>Brooklyn:</strong> Around 1 in 5 parks (21%) are in flood zones.</div>
-            <div><strong>Manhattan:</strong> Over half (54%) of parks are in flood zones.</div>
-            <div><strong>Queens:</strong> About one-third (33%) of parks are in flood zones.</div>
-            <div><strong>Staten Island:</strong> Over half (56%) of parks are in flood zones.</div>
-        </div>
+        <!-- Park info container -->
+<div id="park-info" class="park-info">
+    <h2>PARK INFORMATION</h2>
+        <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
+        <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
+        <strong>BOROUGH:</strong> <span id="park-borough">N/A</span><br />
+        <strong>FLOOD ZONES:</strong> <span id="park-floodzones">N/A</span><br />
+        <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
+        <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
+</div>
+
 
     </div>
 
@@ -67,12 +91,18 @@
     <div id="modalOverlay" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <span id="closeModal" class="close-button">&times;</span>
-            <h2>Methodology</h2>
-            <p>Rebuild analyzed 2,385 City and State-Owned Parks from TPL’s database to identify parks on or near
+            <img src="https://rebuildbydesign.github.io/atlas-of-accountability/img/rebuildbydesign.png" width="250px">
+            <h3>Project Overview</h3>
+            <p>Parks can serve multiple purposes—flood protection, community recreation, improving air quality—maximizing
+                their value as multi-benefit investments. This map highlights parks in New York City as essential climate
+                infrastructure.</p>
+            <h3>Methodology</h3>
+            <p>Rebuild by Design analyzed 2,385 City and State-Owned Parks from TPL’s database to identify parks on or near
                 current and future stormwater and storm surge flood zones. A 100-foot buffer was applied to show how
                 flooding in or near parks can impact nearby neighborhoods and infrastructure. This study highlights an
                 opportunity to secure funding for flood mitigation that reduces risks while improving parks for
                 recreation and resilience.</p>
+                
 
             <h3>Data Sources:</h3>
             <ul>
