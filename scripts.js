@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiajAwYnkiLCJhIjoiY2x1bHUzbXZnMGhuczJxcG83YXY4c
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/j00by/cm4u8ncu3009401s0fxinaejd',
-    center: [-74.00620, 40.69494],
+    center: [-74.09287, 40.70332],
     zoom: 10.2
 });
 
@@ -58,6 +58,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+
+// SIDEBAR COLLAPSE TOGGLE ARROW
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleSidebar');
+
+    toggleButton.addEventListener('click', function() {
+        sidebar.classList.toggle('sidebar-hidden');
+        // Change the button text depending on whether the sidebar is visible or not
+        if (sidebar.classList.contains('sidebar-hidden')) {
+            toggleButton.textContent = '>>'; // Change to show 'expand' icon
+        } else {
+            toggleButton.textContent = '<< Hide Sidebar'; // Change to show 'collapse' icon
+        }
+    });
+});
 
 
 
@@ -408,5 +426,6 @@ map.on('click', 'parks-risk-layer', (e) => {
         }
     });
 });
+
 
 });

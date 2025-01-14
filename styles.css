@@ -1,22 +1,27 @@
-/* Main Title Styling */
+/* Main Logo Styling */
 #main-title {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: #305922; /* Black background */
-    color: #fff; /* Green text color */
+    background: #305922; /* Background color */
     text-align: center;
-    padding: 0px 0;
-    font-size: 0.8em;
-    font-weight: bold;
-    z-index: 10000; /* Ensure it stays above all other elements */
+    padding: 5px 0; /* Add some padding around the logo */
+    z-index: 10000; /* Ensure it stays above all elements */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for effect */
 }
 
+#main-logo {
+    max-width: 90%; /* Limit the logo width to 90% of the viewport */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 80px; /* Prevent the logo from being too tall */
+    object-fit: contain; /* Ensure the logo fits within the area */
+}
+
+
 /* Basic page layout */
 body {
-    padding-top: 60px; /* Add padding to account for the fixed title height */
+    padding-top: 0px; /* Add padding to account for the fixed title height */
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: #000;
@@ -27,6 +32,9 @@ body {
     line-height: 1.4;
 }
 
+h3 {
+    color: #000; /* Orange on hover */
+}
 /* Hyperlink styling */
 a {
     color: #FFA500; /* Base color for hyperlinks */
@@ -103,17 +111,27 @@ a:hover {
 
 
 
+/* Hidden state of the sidebar */
+.sidebar-hidden {
+    transform: translateX(-320px); /* Moves sidebar out of view */
+}
 
 
 
-/* Sidebar styling */
+/* Sidebar container */
 #sidebar {
-    width: 320px;
-    padding: 20px;
+    position: fixed; /* Changed to fixed to ensure it's positioned relative to the viewport */
+    width: 340px;
+    padding: 10px;
     background: #fdfae3;
     overflow-y: auto;
     border-right: 1px solid #e0e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-out;
+    left: 0; /* Ensure it starts from the left edge */
+    top: 0; /* Align it to the top */
+    bottom: 0; /* Stretch it to the bottom */
+    z-index: 2000; /* Higher z-index if needed */
 }
 
 #sidebar h1 {
@@ -128,6 +146,36 @@ a:hover {
     font-size: 0.9em;
     line-height: 1.4;
 }
+
+/* Toggle Siebar Button Styling */
+.toggle-button {
+    position: fixed; /* Keeps the button fixed on the screen */
+    bottom: 5px; /* Position at the bottom of the sidebar */
+    left: 0px; /* Start at the left edge of the viewport */
+    background: #305922;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    z-index: 101; /* Ensure it's above other content */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right side */
+    transform: translateX(0); /* Initial position not translated */
+}
+.toggle-button:hover {
+    background: #449928; /* Slightly darker green on hover */
+}
+
+/* Sidebar hidden state */
+.sidebar-hidden .toggle-button {
+    transform: translateX(320px); /* Moves button right to stick out from the hidden sidebar */
+    content: '>> Show'; /* Changes content to indicate expansion */
+}
+
+
+
+
+
+
 
 /* Sidebar info container */
 /* Park Info Styling */
@@ -182,7 +230,7 @@ a:hover {
 /* Legend styling */
 #legend {
     position: absolute;
-    bottom: 10px;
+    bottom: 30px;
     right: 10px; /* Position legend on bottom right */
     background: rgba(255, 255, 255, 0.8); /* 30% transparent white background */
     color: #000;
@@ -214,17 +262,17 @@ a:hover {
     border-radius: 4px;
 }
 
-/* Info Button */
-.info-button {
+/* METHODOLOGY Button */
+.method-button {
     position: fixed;
-    bottom: 30px;
-    left: 15px; /* Position info button on bottom left */
+    bottom: 170px;
+    right: 15px; /* Position info button on bottom left */
     z-index: 9999;
     background: #305922; /* Green background */
     border: none;
     border-radius: 12px; /* Rounded rectangle */
     width: auto; /* Automatically adjusts to text width */
-    padding: 10px 20px; /* Adds space around text for a button shape */
+    padding: 8px 15px; /* Adds space around text for a button shape */
     font-size: 1em; /* Adjust font size */
     color: #fff; /* White text */
     cursor: pointer;
@@ -233,7 +281,7 @@ a:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
-.info-button:hover {
+.method-button:hover {
     background: #449928; /* Slightly darker green on hover */
 }
 
