@@ -9,8 +9,43 @@ const map = new mapboxgl.Map({
     zoom: 10.2
 });
 
+// Add Mapbox Geocoder
+const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken, // Use the same access token as the map
+    mapboxgl: mapboxgl, // Pass the mapbox-gl instance
+    placeholder: 'Enter your address', // Placeholder text for the input box
+    zoom: 14, // Zoom level after geocoding
+    proximity: {
+        longitude: -74.0060, // New York City longitude
+        latitude: 40.7128 // New York City latitude
+    } // Bias results to NYC
+});
+
+// Add the Geocoder above the navigation control
+map.addControl(geocoder, 'top-right');
+
+// Optionally, add a marker to show the selected location
+let marker;
+geocoder.on('result', (e) => {
+    const coordinates = e.result.center;
+
+    // If a marker exists, remove it
+    if (marker) {
+        marker.remove();
+    }
+
+    // Add a new marker at the searched location
+    marker = new mapboxgl.Marker()
+        .setLngLat(coordinates)
+        .addTo(map);
+
+    // Zoom to the location
+    map.flyTo({ center: coordinates, zoom: 14 });
+});
+
 // Add navigation controls
 map.addControl(new mapboxgl.NavigationControl());
+
 
 
 
@@ -76,9 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-
-
 
 
 

@@ -6,30 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NYC Parks as Critical Infrastructure</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Mapbox GL JS CSS -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- Mapbox Geocoder CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        rel="stylesheet" />
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+
 </head>
 
 <body>
-    
+
     <!-- Instructions Popup -->
     <div id="instructionsPopup" class="popup-overlay">
         <div class="popup-content">
             <button id="closePopup" class="popup-close-button">&times;</button>
             <h3>HOW TO USE INTERACTIVE MAP</h3>
             <ol>
-                <li><strong>EXPLORE THE MAP:</strong> Explore the map by using your mouse to drag and zoom. Click on the green circles to learn about parks in flood risk.</li>
-                <li><strong>VIEW PARK DETAILS:</strong> When you click on a park, you'll see details like its name, location, and climate  and social vulnerablity information on the left sidebar.</li>
-                <li><strong>TOGGLE FLOOD SCENARIOS:</strong> Use the toggle in the sidebar to switch between today's flood risks (2020) and future risks (2100).</li>
-                <li><strong>LEARN MORE:</strong> Click "Methodology" bottom left for data sources and analysis details.</li>
+                <li><strong>NAVIGATE THE MAP:</strong> Use your mouse to drag and zoom in and out. Alternatively, use the navigation controls located at the top right of the map or input your address to find the closest park</li>
+                <li><strong>SEARCH AN ADDRESS:</strong> Enter your address in the address bar at the top right to locate specific areas quickly.</li>
+                <li><strong>VIEW PARK DETAILS:</strong> Click on a green circle to display information about a park's climate and social vulnerability in the left sidebar.</li>
+                <li><strong>TOGGLE FLOOD SCENARIOS:</strong> Use the toggle in the left sidebar to switch between today's flood risks (2020) and future risks (up to 2100).</li>
+                <li><strong>LEARN MORE:</strong> Click on "Methodology" at the bottom right to learn about the methodology and data sources used.
+                </li>
             </ol>
         </div>
     </div>
-    
 
-    
-    
-   <!-- Main Logo
+
+
+
+    <!-- Main Logo
 <div id="main-title">
     <img src="img/rbd-logo.png" alt="Parks as Essential Climate Infrastructure" id="main-logo" />
 </div>   -->
@@ -39,41 +46,45 @@
 
     <!-- Sidebar -->
     <div id="sidebar">
-        <button id="toggleSidebar" class="toggle-button"><< Hide Sidebar</button> <!-- Left arrow when expanded -->
-        <div class="sidebar-content">
-            <img src="img/rbd-logo.png" width="60px">
-            <img src="img/parks-logo-sidebar.png" width="340px">
-            <p>This map highlights all city and state-owned parks in New York City as essential climate infrastructure. Parks can serve multiple purposes—flood protection, community recreation, improving air quality—maximizing their value as multi-benefit investments.</p>
-            <p>Today, roughly 4 in 10 parks (38%) are in flood zones under current conditions. By 2100, about 7 in 10 parks (69%) are projected to be in flood zones, compared to 38% today.</p>
+        <button id="toggleSidebar" class="toggle-button">
+            << Hide Sidebar</button> <!-- Left arrow when expanded -->
+                <div class="sidebar-content">
+                    <img src="img/rbd-logo.png" width="60px">
+                    <img src="img/parks-logo-sidebar.png" width="340px">
+                    <p>This map highlights all city and state-owned parks in New York City as essential climate
+                        infrastructure. Parks can serve multiple purposes—flood protection, community recreation,
+                        improving air quality—maximizing their value as multi-benefit investments.</p>
+                    <p>Today, roughly 4 in 10 parks (38%) are in flood zones under current conditions. By 2100, about 7
+                        in 10 parks (69%) are projected to be in flood zones, compared to 38% today.</p>
 
-        <!-- Radio Toggle for 2020 / 2100 -->
-        <div>
-            <label>
-                <input type="radio" name="riskYear" value="2020" checked>
-                <strong>Current Risk (2020)</strong>
-            </label>
-            <br>
-            <label>
-                <input type="radio" name="riskYear" value="2100">
-                <strong>Future Risk (2100)</strong>
-            </label>
-        </div>
+                    <!-- Radio Toggle for 2020 / 2100 -->
+                    <div>
+                        <label>
+                            <input type="radio" name="riskYear" value="2020" checked>
+                            <strong>Current Risk (2020)</strong>
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="riskYear" value="2100">
+                            <strong>Future Risk (2100)</strong>
+                        </label>
+                    </div>
 
-        <!-- Park info container -->
-        <!-- Park info container -->
-<div id="park-info" class="park-info">
-    <h2>PARK INFORMATION</h2>
-        <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
-        <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
-        <strong>BOROUGH:</strong> <span id="park-borough">N/A</span><br />
-        <strong>FLOOD ZONES:</strong> <span id="park-floodzones">N/A</span><br />
-        <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
-        <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
-</div>
+                    <!-- Park info container -->
+                    <!-- Park info container -->
+                    <div id="park-info" class="park-info">
+                        <h2>PARK INFORMATION</h2>
+                        <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
+                        <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
+                        <strong>BOROUGH:</strong> <span id="park-borough">N/A</span><br />
+                        <strong>FLOOD ZONES:</strong> <span id="park-floodzones">N/A</span><br />
+                        <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
+                        <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
+                    </div>
 
 
+                </div>
     </div>
-</div>
     <!-- Map container -->
     <div id="map"></div>
 
@@ -95,47 +106,43 @@
     <div id="modalOverlay" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <span id="closeModal" class="close-button">&times;</span>
-            <h3>PROJECT OVERVIEW</h3>
-            <p>Parks can serve multiple purposes—flood protection, community recreation, improving air quality—maximizing
-                their value as multi-benefit investments. This map highlights parks in New York City as essential climate
-                infrastructure.</p>
+            
             <h3>METHODOLOGY</h3>
-            <p>Rebuild by Design analyzed 2,385 City and State-Owned Parks from TPL’s database to identify parks on or near
-                current and future stormwater and storm surge flood zones. A 100-foot buffer was applied to show how
-                flooding in or near parks can impact nearby neighborhoods and infrastructure. This study highlights an
-                opportunity to secure funding for flood mitigation that reduces risks while improving parks for
-                recreation and resilience.</p>
-                
+            <p>Rebuild by Design analyzed 2,385 City and State-Owned Parks from TPL’s database to identify parks on or near current and future stormwater and storm surge flood zones. A 100-foot buffer was applied to show how flooding in or near parks can impact nearby neighborhoods and infrastructure.</p>
 
-            <h3>DATA SOURCES:</h3>
-            <ul>
-                <li><a href="https://www.tpl.org/park-data-downloads"
-                        target="_blank">Trust for Public Land's ParkServe Dataset</a></li>
-                <li><a href="https://data.cityofnewyork.us/Environment/Sea-Level-Rise-Maps-2020s-100-year-Floodplain-/ezfn-5dsb"
-                        target="_blank">2020 Storm Surge Flood Zones</a></li>
-                <li><a href="https://data.cityofnewyork.us/Environment/NYC-Stormwater-Flood-Maps/9i7c-xyvv/about_data"
-                        target="_blank">2020 Stormwater Flood Zones (Limited)</a></li>
-                <li><a href="https://data.cityofnewyork.us/Environment/Sea-Level-Rise-Maps-2050s-100-year-Floodplain-/hbw8-2bah"
-                        target="_blank">2050 Storm Surge Flood Zones</a></li>
-                <li><a href="https://data.cityofnewyork.us/Environment/NYC-Stormwater-Flood-Maps/9i7c-xyvv/about_data"
-                        target="_blank">2050 Stormwater Flood Zones (Moderate)</a></li>
-                <li><a href="https://data.cityofnewyork.us/Environment/NPCC3_SLR_2100/v3xw-ufub/about_data"
-                        target="_blank">2100 Storm Surge Flood Zones (NPCC3)</a></li>
-                <li><a href="https://data.cityofnewyork.us/Environment/NYC-Stormwater-Flood-Maps/9i7c-xyvv/about_data"
-                        target="_blank">2080 Stormwater Flood Zones (Extreme)</a></li>
-                <li><a href="https://onemap.cdc.gov/Portal/home/item.html?id=2b5d1913e3a94761ad378c109a353cde"
-                        target="_blank">2022 Social Vulnerability Index (SVI) from CDC</a></li>
-                <li><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/data-features/hvi/" target="_blank">2020 Heat
-                        Vulnerability Index (HVI) from DOHMH</a></li>
-            </ul>
+            <h3>DATA SETS</h3>
+            <p><ul><li><a href="https://www.tpl.org/park-data-downloads" target="_blank"><b>Trust for Public Land's ParkServe
+                Dataset</b></a>: Provides data on city and state-owned parks across U.S. cities, highlighting park access and amenities to identify areas needing more recreational spaces.</li>
+                    <li><strong><a href="https://data.cityofnewyork.us/Environment/Sea-Level-Rise-Maps-2020s-100-year-Floodplain-/ezfn-5dsb" target="_blank">2020 Storm Surge Flood Zones:</a></strong> Areas with a 1% annual risk of storm surge flooding as of 2020, within the 100-year floodplain.</li>
+                    <li><strong><a href="https://data.cityofnewyork.us/Environment/NYC-Stormwater-Flood-Maps/9i7c-xyvv/about_data" target="_blank">2020 Stormwater Flood Zones (Limited):</a></strong> Current areas at risk of flooding from heavy rainfalls and poor urban drainage, assessed in 2020.</li>
+                    <li><strong><a href="https://data.cityofnewyork.us/Environment/Sea-Level-Rise-Maps-2050s-100-year-Floodplain-/hbw8-2bah" target="_blank">2050 Storm Surge Flood Zones:</a></strong> Future predictions of areas within the 100-year floodplain at risk of storm surge flooding by 2050.</li>
+                    <li><strong><a href="https://data.cityofnewyork.us/Environment/NYC-Stormwater-Flood-Maps/9i7c-xyvv/about_data" target="_blank">2050 Stormwater Flood Zones (Moderate):</a></strong> Predictions of areas at risk of moderate stormwater flooding by 2050.</li>
+                    <li><strong><a href="https://data.cityofnewyork.us/Environment/NPCC3_SLR_2100/v3xw-ufub/about_data" target="_blank">2100 Storm Surge Flood Zones:</a></strong> Projections for storm surge flooding in 2100, using climate change data from the NYC Panel on Climate Change.</li>
+                    <li><strong><a href="https://data.cityofnewyork.us/Environment/NYC-Stormwater-Flood-Maps/9i7c-xyvv/about_data" target="_blank">2080 Stormwater Flood Zones (Extreme):</a></strong> Forecasts of areas likely to experience severe stormwater flooding in 2080.</li>
+        
+    <li><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/data-features/hvi/" target="_blank"><b>2020 Heat
+        Vulnerability Index (HVI) from DOHMH</b></a>: he Heat Vulnerability Index (HVI), from NYC DOHMH, highlights neighborhoods at greater risk of
+        heat-related illness or death due to factors like air conditioning access and surface temperatures.</li>
+
+                    <li><a href="https://onemap.cdc.gov/Portal/home/item.html?id=2b5d1913e3a94761ad378c109a353cde"
+                        target="_blank"><b>2022 Social Vulnerability Index (SVI) from CDC</b></a>: The Social Vulnerability Index (SVI), from the CDC, uses 15 indicators (e.g., income, housing, and
+                        language barriers) to measure a community's ability to prepare for and recover from disasters.</li>
+                </ul></p>
+
+            
         </div>
     </div>
 
 
 
-    <!-- Mapbox GL JS -->
+    <!-- Mapbox GL + Geocoder + Judy's scripts -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.3/mapbox-gl-geocoder.min.js"></script>
     <script src="scripts.js"></script>
+
+
+
 </body>
 
 </html>
