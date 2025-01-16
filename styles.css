@@ -319,7 +319,7 @@ a:hover {
     right: 15px;
     /* Position info button on bottom left */
     z-index: 1;
-    background: #305922;
+    background: #000;
     /* Green background */
     border: none;
     border-radius: 12px;
@@ -729,7 +729,7 @@ a:hover {
     right: 15px;
     /* Position info button on bottom left */
     z-index: 1;
-    background: #305922;
+    background: #000;
     /* Green background */
     border: none;
     border-radius: 12px;
