@@ -4,24 +4,32 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #305922; /* Background color */
+    background: #305922;
+    /* Background color */
     text-align: center;
-    padding: 5px 0; /* Add some padding around the logo */
-    z-index: 10000; /* Ensure it stays above all elements */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for effect */
+    padding: 5px 0;
+    /* Add some padding around the logo */
+    z-index: 10000;
+    /* Ensure it stays above all elements */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow for effect */
 }
 
-#main-logo {
-    max-width: 90%; /* Limit the logo width to 90% of the viewport */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 80px; /* Prevent the logo from being too tall */
-    object-fit: contain; /* Ensure the logo fits within the area */
+/* Logo adjustments */
+#rbd-logo {
+    width: 50px;
+    height: auto;
 }
 
+#parks-logo {
+    width: 280px;
+    height: auto;
+}
 
 /* Basic page layout */
 body {
-    padding-top: 0px; /* Add padding to account for the fixed title height */
+    padding-top: 0px;
+    /* Add padding to account for the fixed title height */
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: #000;
@@ -34,19 +42,27 @@ body {
 
 
 h3 {
-    color: #000; /* Orange on hover */
+    color: #000;
+    /* Orange on hover */
 }
+
 /* Hyperlink styling */
 a {
-    color: #FFA500; /* Base color for hyperlinks */
-    text-decoration: underline; /* Underlined for visibility */
-    cursor: pointer; /* Pointer cursor for interactivity */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    color: #FFA500;
+    /* Base color for hyperlinks */
+    text-decoration: underline;
+    /* Underlined for visibility */
+    cursor: pointer;
+    /* Pointer cursor for interactivity */
+    transition: color 0.3s ease;
+    /* Smooth transition for hover effect */
 }
 
 a:hover {
-    color: #FFD580; /* Brighter orange close to white on hover */
-    text-decoration: none; /* Optional: Remove underline on hover for effect */
+    color: #FFD580;
+    /* Brighter orange close to white on hover */
+    text-decoration: none;
+    /* Optional: Remove underline on hover for effect */
 }
 
 
@@ -58,17 +74,22 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark transparent background */
     z-index: 10001;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
 }
 
 /* Popup Content */
 .popup-content {
-    background: #fff; /* Black background */
-    color: #000; /* White text */
+    background: #fff;
+    /* Black background */
+    color: #000;
+    /* White text */
     width: 500px;
     max-width: 90%;
     padding: 20px;
@@ -88,8 +109,10 @@ a:hover {
     font-size: 1.5em;
     cursor: pointer;
 }
+
 .popup-close-button:hover {
-    color: #FFA500; /* Orange on hover */
+    color: #FFA500;
+    /* Orange on hover */
 }
 
 /* Popup List Styling */
@@ -104,25 +127,30 @@ a:hover {
 
 .popup-content h3 {
     margin-top: 0;
-    color: #FFA500; /* Highlighted orange title */
+    color: #FFA500;
+    /* Highlighted orange title */
 }
+
 /* Popup-specific strong styling */
 #instructionsPopup strong {
-    color: #449928; /* Green color for bold text */
+    color: #449928;
+    /* Green color for bold text */
 }
 
 
 
-/* Hidden state of the sidebar */
+/* MUST KEEP FOR FUNCTIONAL - Hidden state of the sidebar */
 .sidebar-hidden {
-    transform: translateX(-320px); /* Moves sidebar out of view */
+    transform: translateX(-320px);
+    /* Moves sidebar out of view */
 }
 
 
 
 /* Sidebar container */
 #sidebar {
-    position: fixed; /* Changed to fixed to ensure it's positioned relative to the viewport */
+    position: fixed;
+    /* Changed to fixed to ensure it's positioned relative to the viewport */
     width: 340px;
     padding: 10px;
     background: #fdfae3;
@@ -130,10 +158,14 @@ a:hover {
     border-right: 1px solid #e0e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-out;
-    left: 0; /* Ensure it starts from the left edge */
-    top: 0; /* Align it to the top */
-    bottom: 0; /* Stretch it to the bottom */
-    z-index: 2000; /* Higher z-index if needed */
+    left: 0;
+    /* Ensure it starts from the left edge */
+    top: 0;
+    /* Align it to the top */
+    bottom: 0;
+    /* Stretch it to the bottom */
+    z-index: 2000;
+    /* Higher z-index if needed */
 }
 
 #sidebar h1 {
@@ -151,26 +183,28 @@ a:hover {
 
 /* Toggle Siebar Button Styling */
 .toggle-button {
-    position: fixed; /* Keeps the button fixed on the screen */
-    bottom: 5px; /* Position at the bottom of the sidebar */
-    left: 0px; /* Start at the left edge of the viewport */
+    position: fixed;
+    /* Keeps the button fixed on the screen */
+    bottom: 5px;
+    /* Position at the bottom of the sidebar */
+    left: 0px;
+    /* Start at the left edge of the viewport */
     background: #969696;
     color: #fff;
     border: none;
     cursor: pointer;
     padding: 5px 10px;
-    z-index: 101; /* Ensure it's above other content */
-    border-radius: 0 5px 5px 0; /* Rounded corners on the right side */
-    transform: translateX(0); /* Initial position not translated */
-}
-.toggle-button:hover {
-    background: #449928; /* Slightly darker green on hover */
+    z-index: 5000;
+    /* Ensure it's above other content */
+    border-radius: 0 5px 5px 0;
+    /* Rounded corners on the right side */
+    transform: translateX(0);
+    /* Initial position not translated */
 }
 
-/* Sidebar hidden state */
-.sidebar-hidden .toggle-button {
-    transform: translateX(320px); /* Moves button right to stick out from the hidden sidebar */
-    content: '>> Show'; /* Changes content to indicate expansion */
+.toggle-button:hover {
+    background: #449928;
+    /* Slightly darker green on hover */
 }
 
 
@@ -182,8 +216,10 @@ a:hover {
 /* Sidebar info container */
 /* Park Info Styling */
 .park-info {
-    background: #fff; /* Black background */
-    color: #000; /* White text */
+    background: #fff;
+    /* Black background */
+    color: #000;
+    /* White text */
     padding: 20px;
     border-radius: 6px;
     margin: 20px 0;
@@ -191,32 +227,40 @@ a:hover {
 }
 
 .park-info h2 {
-    color: #FFA500; /* Highlighted title */
+    color: #FFA500;
+    /* Highlighted title */
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
 .park-info ul {
-    list-style: none; /* Remove bullets */
+    list-style: none;
+    /* Remove bullets */
     padding: 0;
     margin: 0;
 }
 
 .park-info li {
-    margin-bottom: 10px; /* Spacing between rows */
-    display: flex; /* Align label and content horizontally */
+    margin-bottom: 10px;
+    /* Spacing between rows */
+    display: flex;
+    /* Align label and content horizontally */
     justify-content: space-between;
 }
 
 .park-info strong {
-    color: #22a845; /* Green for emphasis */
-    flex-basis: 40%; /* Adjust label width */
+    color: #22a845;
+    /* Green for emphasis */
+    flex-basis: 40%;
+    /* Adjust label width */
 }
 
 .park-info span {
-    flex-basis: 60%; /* Adjust value width */
+    flex-basis: 60%;
+    /* Adjust value width */
     text-align: left;
-    font-weight: normal; /* Keep values regular weight */
+    font-weight: normal;
+    /* Keep values regular weight */
 }
 
 
@@ -233,8 +277,10 @@ a:hover {
 #legend {
     position: absolute;
     bottom: 30px;
-    right: 10px; /* Position legend on bottom right */
-    background: rgba(255, 255, 255, 0.8); /* 30% transparent white background */
+    right: 10px;
+    /* Position legend on bottom right */
+    background: rgba(255, 255, 255, 0.8);
+    /* 30% transparent white background */
     color: #000;
     padding: 5px 15px;
     font-size: 0.9em;
@@ -244,8 +290,10 @@ a:hover {
 }
 
 #legend h3 {
-    margin: 4px; /* Remove extra margin from the heading */
-    padding-bottom: 5px; /* Optional: Add space below the title */
+    margin: 4px;
+    /* Remove extra margin from the heading */
+    padding-bottom: 5px;
+    /* Optional: Add space below the title */
 }
 
 
@@ -268,23 +316,33 @@ a:hover {
 .method-button {
     position: fixed;
     bottom: 170px;
-    right: 15px; /* Position info button on bottom left */
+    right: 15px;
+    /* Position info button on bottom left */
     z-index: 1;
-    background: #305922; /* Green background */
+    background: #305922;
+    /* Green background */
     border: none;
-    border-radius: 12px; /* Rounded rectangle */
-    width: auto; /* Automatically adjusts to text width */
-    padding: 8px 15px; /* Adds space around text for a button shape */
-    font-size: 1em; /* Adjust font size */
-    color: #fff; /* White text */
+    border-radius: 12px;
+    /* Rounded rectangle */
+    width: auto;
+    /* Automatically adjusts to text width */
+    padding: 8px 15px;
+    /* Adds space around text for a button shape */
+    font-size: 1em;
+    /* Adjust font size */
+    color: #fff;
+    /* White text */
     cursor: pointer;
     text-align: center;
-    line-height: normal; /* Normal line-height for text alignment */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    line-height: normal;
+    /* Normal line-height for text alignment */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
 }
 
 .method-button:hover {
-    background: #449928; /* Slightly darker green on hover */
+    background: #449928;
+    /* Slightly darker green on hover */
 }
 
 /* Modal Overlay */
@@ -320,28 +378,34 @@ a:hover {
 /* Ensure all sidebar feature text is uppercase */
 .sidebar-feature {
     text-transform: uppercase;
-  }
-  
+}
 
-  /* SHARE BUTTON */
 
-  .mapbox-share-button {
+/* SHARE BUTTON */
+
+.mapbox-share-button {
     position: absolute;
-    bottom: 40px; /* Adjust position */
-    left: 0px; /* Adjust position */
-    background-color: #969696; /* Green background */
-    color: #fff; /* White text */
+    bottom: 40px;
+    /* Adjust position */
+    left: 0px;
+    /* Adjust position */
+    background-color: #969696;
+    /* Green background */
+    color: #fff;
+    /* White text */
     border: none;
     border-radius: 5px;
     padding: 5px 15px;
     font-size: 13.5px;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Ensure it's above the map */
+    z-index: 1000;
+    /* Ensure it's above the map */
 }
 
 .mapbox-share-button:hover {
-    background-color: #449928; /* Slightly lighter green on hover */
+    background-color: #449928;
+    /* Slightly lighter green on hover */
 }
 
 /* Main Logo Styling */
@@ -350,24 +414,33 @@ a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    background: #305922; /* Background color */
+    background: #305922;
+    /* Background color */
     text-align: center;
-    padding: 5px 0; /* Add some padding around the logo */
-    z-index: 10000; /* Ensure it stays above all elements */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for effect */
+    padding: 5px 0;
+    /* Add some padding around the logo */
+    z-index: 10000;
+    /* Ensure it stays above all elements */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow for effect */
 }
 
 #main-logo {
-    max-width: 90%; /* Limit the logo width to 90% of the viewport */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 80px; /* Prevent the logo from being too tall */
-    object-fit: contain; /* Ensure the logo fits within the area */
+    max-width: 90%;
+    /* Limit the logo width to 90% of the viewport */
+    height: auto;
+    /* Maintain aspect ratio */
+    max-height: 80px;
+    /* Prevent the logo from being too tall */
+    object-fit: contain;
+    /* Ensure the logo fits within the area */
 }
 
 
 /* Basic page layout */
 body {
-    padding-top: 0px; /* Add padding to account for the fixed title height */
+    padding-top: 0px;
+    /* Add padding to account for the fixed title height */
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: #000;
@@ -380,19 +453,27 @@ body {
 
 
 h3 {
-    color: #000; /* Orange on hover */
+    color: #000;
+    /* Orange on hover */
 }
+
 /* Hyperlink styling */
 a {
-    color: #FFA500; /* Base color for hyperlinks */
-    text-decoration: underline; /* Underlined for visibility */
-    cursor: pointer; /* Pointer cursor for interactivity */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    color: #FFA500;
+    /* Base color for hyperlinks */
+    text-decoration: underline;
+    /* Underlined for visibility */
+    cursor: pointer;
+    /* Pointer cursor for interactivity */
+    transition: color 0.3s ease;
+    /* Smooth transition for hover effect */
 }
 
 a:hover {
-    color: #FFD580; /* Brighter orange close to white on hover */
-    text-decoration: none; /* Optional: Remove underline on hover for effect */
+    color: #FFD580;
+    /* Brighter orange close to white on hover */
+    text-decoration: none;
+    /* Optional: Remove underline on hover for effect */
 }
 
 
@@ -404,17 +485,22 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark transparent background */
     z-index: 10001;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
 }
 
 /* Popup Content */
 .popup-content {
-    background: #fff; /* Black background */
-    color: #000; /* White text */
+    background: #fff;
+    /* Black background */
+    color: #000;
+    /* White text */
     width: 500px;
     max-width: 90%;
     padding: 20px;
@@ -434,8 +520,10 @@ a:hover {
     font-size: 1.5em;
     cursor: pointer;
 }
+
 .popup-close-button:hover {
-    color: #FFA500; /* Orange on hover */
+    color: #FFA500;
+    /* Orange on hover */
 }
 
 /* Popup List Styling */
@@ -450,25 +538,21 @@ a:hover {
 
 .popup-content h3 {
     margin-top: 0;
-    color: #FFA500; /* Highlighted orange title */
+    color: #FFA500;
+    /* Highlighted orange title */
 }
+
 /* Popup-specific strong styling */
 #instructionsPopup strong {
-    color: #449928; /* Green color for bold text */
+    color: #449928;
+    /* Green color for bold text */
 }
-
-
-
-/* Hidden state of the sidebar */
-.sidebar-hidden {
-    transform: translateX(-320px); /* Moves sidebar out of view */
-}
-
 
 
 /* Sidebar container */
 #sidebar {
-    position: fixed; /* Changed to fixed to ensure it's positioned relative to the viewport */
+    position: fixed;
+    /* Changed to fixed to ensure it's positioned relative to the viewport */
     width: 340px;
     padding: 10px;
     background: #fdfae3;
@@ -476,10 +560,14 @@ a:hover {
     border-right: 1px solid #e0e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-out;
-    left: 0; /* Ensure it starts from the left edge */
-    top: 0; /* Align it to the top */
-    bottom: 0; /* Stretch it to the bottom */
-    z-index: 2000; /* Higher z-index if needed */
+    left: 0;
+    /* Ensure it starts from the left edge */
+    top: 0;
+    /* Align it to the top */
+    bottom: 0;
+    /* Stretch it to the bottom */
+    z-index: 2000;
+    /* Higher z-index if needed */
 }
 
 #sidebar h1 {
@@ -497,26 +585,36 @@ a:hover {
 
 /* Toggle Siebar Button Styling */
 .toggle-button {
-    position: fixed; /* Keeps the button fixed on the screen */
-    bottom: 5px; /* Position at the bottom of the sidebar */
-    left: 0px; /* Start at the left edge of the viewport */
+    position: fixed;
+    /* Keeps the button fixed on the screen */
+    bottom: 5px;
+    /* Position at the bottom of the sidebar */
+    left: 0px;
+    /* Start at the left edge of the viewport */
     background: #969696;
     color: #fff;
     border: none;
     cursor: pointer;
     padding: 5px 10px;
-    z-index: 101; /* Ensure it's above other content */
-    border-radius: 0 5px 5px 0; /* Rounded corners on the right side */
-    transform: translateX(0); /* Initial position not translated */
-}
-.toggle-button:hover {
-    background: #449928; /* Slightly darker green on hover */
+    z-index: 600001;
+    /* Ensure it's above other content */
+    border-radius: 0 5px 5px 0;
+    /* Rounded corners on the right side */
+    transform: translateX(0);
+    /* Initial position not translated */
 }
 
-/* Sidebar hidden state */
+.toggle-button:hover {
+    background: #449928;
+    /* Slightly darker green on hover */
+}
+
+/* MUST KEEP FOR FUNCTIONAL - Sidebar hidden state */
 .sidebar-hidden .toggle-button {
-    transform: translateX(320px); /* Moves button right to stick out from the hidden sidebar */
-    content: '>> Show'; /* Changes content to indicate expansion */
+    transform: translateX(320px);
+    /* Moves button right to stick out from the hidden sidebar */
+    content: '>>';
+    /* Changes content to indicate expansion */
 }
 
 
@@ -528,8 +626,10 @@ a:hover {
 /* Sidebar info container */
 /* Park Info Styling */
 .park-info {
-    background: #fff; /* Black background */
-    color: #000; /* White text */
+    background: #fff;
+    /* Black background */
+    color: #000;
+    /* White text */
     padding: 20px;
     border-radius: 6px;
     margin: 20px 0;
@@ -537,32 +637,40 @@ a:hover {
 }
 
 .park-info h2 {
-    color: #FFA500; /* Highlighted title */
+    color: #FFA500;
+    /* Highlighted title */
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
 .park-info ul {
-    list-style: none; /* Remove bullets */
+    list-style: none;
+    /* Remove bullets */
     padding: 0;
     margin: 0;
 }
 
 .park-info li {
-    margin-bottom: 10px; /* Spacing between rows */
-    display: flex; /* Align label and content horizontally */
+    margin-bottom: 10px;
+    /* Spacing between rows */
+    display: flex;
+    /* Align label and content horizontally */
     justify-content: space-between;
 }
 
 .park-info strong {
-    color: #22a845; /* Green for emphasis */
-    flex-basis: 40%; /* Adjust label width */
+    color: #22a845;
+    /* Green for emphasis */
+    flex-basis: 40%;
+    /* Adjust label width */
 }
 
 .park-info span {
-    flex-basis: 60%; /* Adjust value width */
+    flex-basis: 60%;
+    /* Adjust value width */
     text-align: left;
-    font-weight: normal; /* Keep values regular weight */
+    font-weight: normal;
+    /* Keep values regular weight */
 }
 
 
@@ -579,8 +687,10 @@ a:hover {
 #legend {
     position: absolute;
     bottom: 30px;
-    right: 10px; /* Position legend on bottom right */
-    background: rgba(255, 255, 255, 0.8); /* 30% transparent white background */
+    right: 10px;
+    /* Position legend on bottom right */
+    background: rgba(255, 255, 255, 0.8);
+    /* 30% transparent white background */
     color: #000;
     padding: 5px 15px;
     font-size: 0.9em;
@@ -590,8 +700,10 @@ a:hover {
 }
 
 #legend h3 {
-    margin: 4px; /* Remove extra margin from the heading */
-    padding-bottom: 5px; /* Optional: Add space below the title */
+    margin: 4px;
+    /* Remove extra margin from the heading */
+    padding-bottom: 5px;
+    /* Optional: Add space below the title */
 }
 
 
@@ -614,23 +726,33 @@ a:hover {
 .method-button {
     position: fixed;
     bottom: 170px;
-    right: 15px; /* Position info button on bottom left */
+    right: 15px;
+    /* Position info button on bottom left */
     z-index: 1;
-    background: #305922; /* Green background */
+    background: #305922;
+    /* Green background */
     border: none;
-    border-radius: 12px; /* Rounded rectangle */
-    width: auto; /* Automatically adjusts to text width */
-    padding: 8px 15px; /* Adds space around text for a button shape */
-    font-size: 1em; /* Adjust font size */
-    color: #fff; /* White text */
+    border-radius: 12px;
+    /* Rounded rectangle */
+    width: auto;
+    /* Automatically adjusts to text width */
+    padding: 8px 15px;
+    /* Adds space around text for a button shape */
+    font-size: 1em;
+    /* Adjust font size */
+    color: #fff;
+    /* White text */
     cursor: pointer;
     text-align: center;
-    line-height: normal; /* Normal line-height for text alignment */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    line-height: normal;
+    /* Normal line-height for text alignment */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
 }
 
 .method-button:hover {
-    background: #449928; /* Slightly darker green on hover */
+    background: #449928;
+    /* Slightly darker green on hover */
 }
 
 /* Modal Overlay */
@@ -666,6 +788,217 @@ a:hover {
 /* Ensure all sidebar feature text is uppercase */
 .sidebar-feature {
     text-transform: uppercase;
-  }
- 
- 
+}
+
+
+
+
+
+
+/* General Styles for Mobile Responsiveness */
+@media (max-width: 768px) {
+
+    /* Sidebar adjustments */
+    #sidebar {
+        width: 350px;
+        font-size: 1em;
+    }
+
+    .sidebar-hidden {
+        transform: translateX(-320px);
+        /* Moves sidebar out of view */
+    }
+
+
+    /* Toggle Siebar Button Styling */
+    .toggle-button {
+        position: fixed;
+        /* Keeps the button fixed on the screen */
+        bottom: 5px;
+        /* Position at the bottom of the sidebar */
+        left: 0px;
+        /* Start at the left edge of the viewport */
+        background: #969696;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        z-index: 60000;
+        /* Ensure it's above other content */
+        border-radius: 0 5px 5px 0;
+        /* Rounded corners on the right side */
+        transform: translateX(0);
+        /* Initial position not translated */
+    }
+
+    .toggle-button:hover {
+        background: #449928;
+        /* Slightly darker green on hover */
+    }
+
+    /* MUST KEEP FOR FUNCTIONAL - Sidebar hidden state */
+    .sidebar-hidden .toggle-button {
+        transform: translateX(330px);
+        /* Moves button right to stick out from the hidden sidebar */
+        content: '>>';
+        /* Changes content to indicate expansion */
+    }
+
+    /* Park-info box adjustments */
+    .park-info {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .park-info h2 {
+        font-size: 1.3em;
+    }
+
+    /* Methodology button adjustments */
+    .method-button {
+        bottom: 150px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+
+    /* Legend adjustments */
+    #legend {
+        bottom: 25px;
+        right: 10px;
+        padding: 8px 10px;
+        font-size: 0.75em;
+    }
+
+    #legend span {
+        width: 15px;
+        height: 15px;
+    }
+
+    /* Instructions popup adjustments */
+    .popup-content {
+        width: 60%;
+        padding: 15px;
+        font-size: 0.9em;
+    }
+
+    .popup-close-button {
+        font-size: 1.8em;
+        top: 8px;
+        right: 8px;
+    }
+
+    /* General text adjustments */
+    body {
+        font-size: 1.1em;
+        line-height: 1.2;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    a {
+        font-size: 1em;
+    }
+
+    /* Logo adjustments */
+    #rbd-logo {
+        width: 50px;
+        height: auto;
+    }
+
+    #parks-logo {
+        width: 280px;
+        height: auto;
+    }
+}
+
+/* For very small screens (e.g., phones) */
+@media (max-width: 480px) {
+    #sidebar {
+        width: 250px;
+        font-size: 0.8em;
+    }
+
+    .sidebar-hidden {
+        transform: translateX(-220px);
+        /* Moves sidebar out of view */
+    }
+
+
+    /* Toggle Siebar Button Styling */
+    .toggle-button {
+        position: fixed;
+        /* Keeps the button fixed on the screen */
+        bottom: 5px;
+        /* Position at the bottom of the sidebar */
+        left: 0px;
+        /* Start at the left edge of the viewport */
+        background: #969696;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        z-index: 60000;
+        /* Ensure it's above other content */
+        border-radius: 0 5px 5px 0;
+        /* Rounded corners on the right side */
+        transform: translateX(0);
+        /* Initial position not translated */
+    }
+
+    .toggle-button:hover {
+        background: #449928;
+        /* Slightly darker green on hover */
+    }
+
+    /* MUST KEEP FOR FUNCTIONAL - Sidebar hidden state */
+    .sidebar-hidden .toggle-button {
+        transform: translateX(230px);
+        /* Moves button right to stick out from the hidden sidebar */
+        content: '>>';
+        /* Changes content to indicate expansion */
+    }
+
+    .park-info {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    .method-button {
+        bottom: 140px;
+        right: 8px;
+        font-size: 0.7em;
+        padding: 5px 8px;
+    }
+
+    #legend {
+        padding: 5px 8px;
+        font-size: 0.7em;
+    }
+
+    .popup-content {
+        font-size: 0.7em;
+        padding: 10px;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    a {
+        font-size: 0.8em;
+    }
+
+    /* Logo adjustments */
+    #rbd-logo {
+        width: 40px;
+        height: auto;
+    }
+
+    #parks-logo {
+        width: 240px;
+        height: auto;
+    }
+}
