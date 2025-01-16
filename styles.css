@@ -884,8 +884,8 @@ a:hover {
 
     .popup-close-button {
         font-size: 1.8em;
-        top: 8px;
-        right: 8px;
+        top: 3px;
+        right: 3px;
     }
 
     /* General text adjustments */
@@ -899,7 +899,7 @@ a:hover {
     }
 
     a {
-        font-size: 1em;
+        font-size: 0.9em;
     }
 
     /* Logo adjustments */
@@ -912,7 +912,17 @@ a:hover {
         width: 280px;
         height: auto;
     }
+    .modal-content {
+        width: 80%; /* Make it take most of the screen */
+        max-width: 600px; /* Cap the max width */
+        margin: 50px auto; /* Reduce margin for smaller screens */
+        padding: 15px; /* Slightly smaller padding */
+    }
 }
+
+
+
+
 
 /* For very small screens (e.g., phones) */
 @media (max-width: 480px) {
@@ -988,7 +998,7 @@ a:hover {
     }
 
     a {
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
 
     /* Logo adjustments */
@@ -1000,5 +1010,17 @@ a:hover {
     #parks-logo {
         width: 240px;
         height: auto;
+    }
+    .modal-content {
+        width: 80%; /* Use almost the full width of the screen */
+        max-width: 400px; /* Cap the max width for very small screens */
+        margin: 30px auto; /* Smaller margin for limited vertical space */
+        padding: 10px; /* Reduce padding for small screens */
+        font-size: 0.7em;
+    }
+    .popup-close-button {
+        font-size: 1.4em;
+        top: 3px;
+        right: 3px;
     }
 }
