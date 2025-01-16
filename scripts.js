@@ -1,12 +1,14 @@
 // MAPBOX CONFIGURATION
 mapboxgl.accessToken = 'pk.eyJ1IjoiajAwYnkiLCJhIjoiY2x1bHUzbXZnMGhuczJxcG83YXY4czJ3ayJ9.S5PZpU9VDwLMjoX_0x5FDQ';
 
-// Initialize the map
+// Adjust map settings based on screen size
+const isMobile = window.innerWidth <= 768;
+
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/j00by/cm4u8ncu3009401s0fxinaejd',
-    center: [-74.09287, 40.70332],
-    zoom: 10.2
+    center: isMobile ? [-74.0, 40.71] : [-74.09287, 40.70332], // Adjust center for mobile
+    zoom: isMobile ? 9.5 : 10.2 // Slightly zoom in on mobile
 });
 
 // Add Mapbox Geocoder
@@ -215,21 +217,22 @@ map.on('load', () => {
         type: 'circle',
         source: 'parks-risk',
         paint: {
-            // Default radius with dynamic scaling
             'circle-radius': [
-                'interpolate', ['linear'], ['zoom'],
-                10, 6,  // Slightly larger for better visibility
-                12, 8,
-                14, 12,
-                16, 18
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                10, isMobile ? 4 : 6, // Smaller radius for mobile
+                12, isMobile ? 6 : 8,
+                14, isMobile ? 8 : 12,
+                16, isMobile ? 10 : 18
             ],
-            'circle-color': '#177931', // Default green
+            'circle-color': '#177931',
             'circle-stroke-width': 1,
-            'circle-stroke-color': '#ffffff' // White stroke for better contrast
+            'circle-stroke-color': '#ffffff'
         },
         filter: [
             'any',
-            ['==', ['get', '2020_SW'], 'X'], // Only parks at risk in 2100 on initial load
+            ['==', ['get', '2020_SW'], 'X'],
             ['==', ['get', '2020_SS'], 'X']
         ]
     });
