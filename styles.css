@@ -25,6 +25,26 @@
     width: 340px;
     height: auto;
 }
+/* High Priority Park Logo */
+.park-info img {
+    max-width: 150px; /* Ensure the logo scales appropriately */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Center align */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.park-info a {
+    text-align: left;
+    color: #0078d7; /* Link color */
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.park-info a:hover {
+    text-decoration: underline; /* Highlight the link on hover */
+}
+
+
 
 /* Basic page layout */
 body {

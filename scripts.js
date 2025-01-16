@@ -208,7 +208,7 @@ map.on('load', () => {
     // ADD PARKS DATA
     map.addSource('parks-risk', {
         type: 'geojson',
-        data: './data/parksData.geojson'
+        data: './data/parksData-2.geojson'
     });
 
     // Add parks layer with default filter for 2020
@@ -267,6 +267,11 @@ map.on('load', () => {
 
         map.getCanvas().style.cursor = ''; // Reset cursor
     });
+
+
+
+
+
 
     // Handle click to keep a park selected
     map.on('click', 'parks-risk-layer', (e) => {
@@ -387,6 +392,9 @@ function getSVIColor(value) {
     return colors[index];
 }
 
+
+
+
 // Sidebar update for clicked parks
 map.on('click', 'parks-risk-layer', (e) => {
     const feature = e.features[0];
@@ -413,26 +421,38 @@ map.on('click', 'parks-risk-layer', (e) => {
         ? feature.properties.Address.toUpperCase()
         : 'N/A';
 
+    // High Priority Park HTML
+    let highPriorityHTML = '';
+    if (feature.properties.HPL_PARKS === "Yes") {
+        highPriorityHTML = `
+            <div style="text-align: left; margin-top: 10px;">
+                <a href="${feature.properties.HPL_LINK}" target="_blank" style="text-decoration: none;">
+                    <img src="${feature.properties.HPL_LOGO}" alt="High Priority Park" 
+                        style="width: 150px; height: auto; margin-bottom: 5px;">
+                </a>
+            </div>
+        `;
+    }
+
     // Sidebar content
     parkInfoContainer.innerHTML = `
-    <div><h2>PARK INFORMATION</h2></div>  
-    <div><strong>PARK NAME:</strong> ${feature.properties.Park_Name?.toUpperCase() || 'N/A'}</div>
-      <div><strong>ADDRESS:</strong> ${address}</div>
-      <div><strong>BOROUGH:</strong> ${feature.properties.Borough?.toUpperCase() || 'N/A'}</div>
-      <div><strong>FLOOD ZONES:</strong> ${floodplains.join(', ') || 'NONE'}</div>
-      <div>
-        <strong>HEAT VULNERABILITY:</strong> <span style="background-color:${hviColor}; color: #FFF; padding: 2px 6px; border-radius: 3px;">
-        ${feature.properties.HVI || 'N/A'}</span> out of 5
-      </div>
-      <div>
-        <strong>SOCIAL VULNERABILITY:</strong> <span style="background-color:${sviColor}; color: #FFF; padding: 2px 6px; border-radius: 3px;">
-        ${feature.properties.SVI || 'N/A'}</span> out of 1
-      </div>
-      <div style="margin-top: 10px;">
-          <a href="#" id="returnToBoroughFindings">Clear Selection</a>
+        <div><h2>PARK INFORMATION</h2></div>  
+        <div><strong>PARK NAME:</strong> ${feature.properties.Park_Name?.toUpperCase() || 'N/A'}</div>
+        <div><strong>ADDRESS:</strong> ${address}</div>
+        <div><strong>BOROUGH:</strong> ${feature.properties.Borough?.toUpperCase() || 'N/A'}</div>
+        <div><strong>FLOOD ZONES:</strong> ${floodplains.join(', ') || 'NONE'}</div>
+        <div>
+            <strong>HEAT VULNERABILITY:</strong> <span style="background-color:${hviColor}; color: #FFF; padding: 2px 6px; border-radius: 3px;">
+            ${feature.properties.HVI || 'N/A'}</span> out of 5
         </div>
-      </div>
+        <div>
+            <strong>SOCIAL VULNERABILITY:</strong> <span style="background-color:${sviColor}; color: #FFF; padding: 2px 6px; border-radius: 3px;">
+            ${feature.properties.SVI || 'N/A'}</span> out of 1
+        </div>
+        ${highPriorityHTML} <!-- High Priority Park content -->
+        
     `;
+
 
     // Add event listener for "Return to Borough Findings"
     document.getElementById('returnToBoroughFindings').addEventListener('click', () => {
