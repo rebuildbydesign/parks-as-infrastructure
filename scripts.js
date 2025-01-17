@@ -6,7 +6,7 @@ const isMobile = window.innerWidth <= 768;
 
 const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/j00by/cm4u8ncu3009401s0fxinaejd',
+    style: 'mapbox://styles/j00by/cm60z8amk005801qvfi826b4d',
     center: isMobile ? [-74.0, 40.71] : [-74.09287, 40.70332], // Adjust center for mobile
     zoom: isMobile ? 9.5 : 10.2 // Slightly zoom in on mobile
 });
