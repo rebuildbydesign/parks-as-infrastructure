@@ -937,6 +937,7 @@ a:hover {
         max-width: 600px; /* Cap the max width */
         margin: 50px auto; /* Reduce margin for smaller screens */
         padding: 15px; /* Slightly smaller padding */
+        font-size: 0.9em;
     }
 }
 
@@ -1036,7 +1037,7 @@ a:hover {
         max-width: 400px; /* Cap the max width for very small screens */
         margin: 30px auto; /* Smaller margin for limited vertical space */
         padding: 10px; /* Reduce padding for small screens */
-        font-size: 0.7em;
+        font-size: 0.6em;
     }
     .popup-close-button {
         font-size: 1.4em;
