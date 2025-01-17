@@ -208,7 +208,7 @@ map.on('load', () => {
     // ADD PARKS DATA
     map.addSource('parks-risk', {
         type: 'geojson',
-        data: './data/parksData-2.geojson'
+        data: './data/parksData.geojson'
     });
 
     // Add parks layer with default filter for 2020
