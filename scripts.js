@@ -150,8 +150,8 @@ map.on('load', () => {
         {
             id: 'floodplain-2020-stormwater',
             source: 'floodplain-2020-stormwater',
-            color: '#d646db',
-            stroke: '#d646db', // Stroke color (same as fill)
+            color: '#c71862',
+            stroke: '#c71862', // Stroke color (same as fill)
             visible: true
         },
         {
@@ -163,8 +163,8 @@ map.on('load', () => {
         {
             id: 'floodplain-2100-stormwater',
             source: 'floodplain-2100-stormwater',
-            color: '#d646db',
-            stroke: '#d646db', // Stroke color (same as fill)
+            color: '#c71862',
+            stroke: '#c71862', // Stroke color (same as fill)
             visible: false
         },
         {
@@ -226,7 +226,7 @@ map.on('load', () => {
                 14, isMobile ? 8 : 12,
                 16, isMobile ? 10 : 18
             ],
-            'circle-color': '#177931',
+            'circle-color': '#397f4e',
             'circle-stroke-width': 1,
             'circle-stroke-color': '#ffffff'
         },
@@ -248,8 +248,8 @@ map.on('load', () => {
         // Set lighter green for the hovered park unless it is the selected park
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#FFA500', // Keep selected park light green
-            ['==', ['get', 'Park_Name'], hoveredFeature.properties.Park_Name], '#FFA500', // Lighter green for hover
+            ['==', ['get', 'Park_Name'], selectedParkId], '#59ff8b', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], hoveredFeature.properties.Park_Name], '#59ff8b', // Lighter green for hover
             '#177931' // Default green for others
         ]);
 
@@ -261,7 +261,7 @@ map.on('load', () => {
         // Reset color for all parks, keeping the selected park highlighted
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#FFA500', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], selectedParkId], '#59ff8b', // Keep selected park light green
             '#177931' // Default green for others
         ]);
 

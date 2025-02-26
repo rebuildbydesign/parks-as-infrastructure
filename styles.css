@@ -68,7 +68,7 @@ h3 {
 
 /* Hyperlink styling */
 a {
-    color: #FFA500;
+    color: #85b8c5;
     /* Base color for hyperlinks */
     text-decoration: underline;
     /* Underlined for visibility */
@@ -79,8 +79,7 @@ a {
 }
 
 a:hover {
-    color: #FFD580;
-    /* Brighter orange close to white on hover */
+    color: #5d91c5;
     text-decoration: none;
     /* Optional: Remove underline on hover for effect */
 }
@@ -131,7 +130,7 @@ a:hover {
 }
 
 .popup-close-button:hover {
-    color: #FFA500;
+    color: #5d91c5;
     /* Orange on hover */
 }
 
@@ -147,13 +146,12 @@ a:hover {
 
 .popup-content h3 {
     margin-top: 0;
-    color: #FFA500;
-    /* Highlighted orange title */
+    color: #5d91c5;
 }
 
 /* Popup-specific strong styling */
 #instructionsPopup strong {
-    color: #449928;
+    color: #397f4e;
     /* Green color for bold text */
 }
 
@@ -173,7 +171,7 @@ a:hover {
     /* Changed to fixed to ensure it's positioned relative to the viewport */
     width: 340px;
     padding: 10px;
-    background: #fdfae3;
+    background: #c1c2c4;
     overflow-y: auto;
     border-right: 1px solid #e0e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -191,7 +189,7 @@ a:hover {
 #sidebar h1 {
     margin-top: 0;
     font-size: 1.8em;
-    color: #449928;
+    color: #397f4e;
     font-weight: 700;
 }
 
@@ -223,8 +221,7 @@ a:hover {
 }
 
 .toggle-button:hover {
-    background: #449928;
-    /* Slightly darker green on hover */
+    background: #397f4e;
 }
 
 
@@ -247,7 +244,7 @@ a:hover {
 }
 
 .park-info h2 {
-    color: #FFA500;
+    color: #5d91c5;
     /* Highlighted title */
     font-size: 1.2em;
     margin-bottom: 10px;
@@ -269,7 +266,7 @@ a:hover {
 }
 
 .park-info strong {
-    color: #22a845;
+    color: #397f4e;
     /* Green for emphasis */
     flex-basis: 40%;
     /* Adjust label width */
@@ -361,8 +358,7 @@ a:hover {
 }
 
 .method-button:hover {
-    background: #449928;
-    /* Slightly darker green on hover */
+    background: #397f4e;
 }
 
 /* Modal Overlay */
@@ -424,9 +420,7 @@ a:hover {
 }
 
 .mapbox-share-button:hover {
-    background-color: #449928;
-    /* Slightly lighter green on hover */
-}
+    background-color: #397f4e;}
 
 /* Main Logo Styling */
 #main-title {
@@ -479,7 +473,7 @@ h3 {
 
 /* Hyperlink styling */
 a {
-    color: #FFA500;
+    color: #5d91c5;
     /* Base color for hyperlinks */
     text-decoration: underline;
     /* Underlined for visibility */
@@ -490,8 +484,7 @@ a {
 }
 
 a:hover {
-    color: #FFD580;
-    /* Brighter orange close to white on hover */
+    color: #85b9c6;
     text-decoration: none;
     /* Optional: Remove underline on hover for effect */
 }
@@ -542,7 +535,7 @@ a:hover {
 }
 
 .popup-close-button:hover {
-    color: #FFA500;
+    color: #5d91c5;
     /* Orange on hover */
 }
 
@@ -558,13 +551,12 @@ a:hover {
 
 .popup-content h3 {
     margin-top: 0;
-    color: #FFA500;
-    /* Highlighted orange title */
+    color: #5d91c5;
 }
 
 /* Popup-specific strong styling */
 #instructionsPopup strong {
-    color: #449928;
+    color: #397f4e;
     /* Green color for bold text */
 }
 
@@ -575,7 +567,7 @@ a:hover {
     /* Changed to fixed to ensure it's positioned relative to the viewport */
     width: 340px;
     padding: 10px;
-    background: #fdfae3;
+    background: #c1c2c4;
     overflow-y: auto;
     border-right: 1px solid #e0e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -593,7 +585,7 @@ a:hover {
 #sidebar h1 {
     margin-top: 0;
     font-size: 1.8em;
-    color: #449928;
+    color: #397f4e;
     font-weight: 700;
 }
 
@@ -625,8 +617,7 @@ a:hover {
 }
 
 .toggle-button:hover {
-    background: #449928;
-    /* Slightly darker green on hover */
+    background: #397f4e;
 }
 
 /* MUST KEEP FOR FUNCTIONAL - Sidebar hidden state */
@@ -657,7 +648,7 @@ a:hover {
 }
 
 .park-info h2 {
-    color: #FFA500;
+    color: #85b8c5;
     /* Highlighted title */
     font-size: 1.2em;
     margin-bottom: 10px;
@@ -679,7 +670,7 @@ a:hover {
 }
 
 .park-info strong {
-    color: #22a845;
+    color: #397f4e;
     /* Green for emphasis */
     flex-basis: 40%;
     /* Adjust label width */
@@ -771,8 +762,7 @@ a:hover {
 }
 
 .method-button:hover {
-    background: #449928;
-    /* Slightly darker green on hover */
+    background: #397f4e;
 }
 
 /* Modal Overlay */
@@ -852,7 +842,7 @@ a:hover {
     }
 
     .toggle-button:hover {
-        background: #449928;
+        background: #397f4e;
         /* Slightly darker green on hover */
     }
 
@@ -980,8 +970,7 @@ a:hover {
     }
 
     .toggle-button:hover {
-        background: #449928;
-        /* Slightly darker green on hover */
+        background: #397f4e;
     }
 
     /* MUST KEEP FOR FUNCTIONAL - Sidebar hidden state */
