@@ -62,8 +62,7 @@ body {
 
 
 h3 {
-    color: #000;
-    /* Orange on hover */
+    color: #5d91c5;
 }
 
 /* Hyperlink styling */
@@ -186,16 +185,28 @@ a:hover {
     /* Higher z-index if needed */
 }
 
-#sidebar h1 {
+#sidebar h3 {
     margin-top: 0;
-    font-size: 1.8em;
-    color: #397f4e;
+    font-size: 1em;
+    color: #000;
     font-weight: 700;
 }
 
 #sidebar p {
     color: #000;
-    font-size: 0.9em;
+    font-size: 0.8em;
+    line-height: 1.4;
+}
+
+#sidebar li {
+    color: #000;
+    font-size: 0.8em;
+    line-height: 1.4;
+}
+
+#sidebar strong {
+    color: #397f4e;
+    font-size: 1em;
     line-height: 1.4;
 }
 
