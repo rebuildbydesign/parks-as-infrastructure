@@ -282,7 +282,7 @@ map.on('load', () => {
         // Highlight the selected park
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#FFA500', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], selectedParkId], '#59ff8b', // Keep selected park light green
             '#177931' // Default green for others
         ]);
 
