@@ -53,26 +53,6 @@ map.addControl(new mapboxgl.NavigationControl());
 
 
 
-
-// METHODOLOGY MODAL
-document.getElementById('openModal').addEventListener('click', () => {
-    document.getElementById('modalOverlay').style.display = 'block';
-});
-
-document.getElementById('closeModal').addEventListener('click', () => {
-    document.getElementById('modalOverlay').style.display = 'none';
-});
-
-document.getElementById('modalOverlay').addEventListener('click', (e) => {
-    if (e.target === document.getElementById('modalOverlay')) {
-        document.getElementById('modalOverlay').style.display = 'none';
-    }
-});
-
-
-
-
-
 // INSTRUCTIONS POPUP
 document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById('instructionsPopup');
@@ -248,8 +228,8 @@ map.on('load', () => {
         // Set lighter green for the hovered park unless it is the selected park
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#59ff8b', // Keep selected park light green
-            ['==', ['get', 'Park_Name'], hoveredFeature.properties.Park_Name], '#59ff8b', // Lighter green for hover
+            ['==', ['get', 'Park_Name'], selectedParkId], '#ffee31', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], hoveredFeature.properties.Park_Name], '#ffee31', // Lighter green for hover
             '#177931' // Default green for others
         ]);
 
@@ -261,7 +241,7 @@ map.on('load', () => {
         // Reset color for all parks, keeping the selected park highlighted
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#59ff8b', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], selectedParkId], '#ffee31', // Keep selected park light green
             '#177931' // Default green for others
         ]);
 
@@ -282,7 +262,7 @@ map.on('load', () => {
         // Highlight the selected park
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#59ff8b', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], selectedParkId], '#ffee31', // Keep selected park light green
             '#177931' // Default green for others
         ]);
 
@@ -300,47 +280,52 @@ map.on('load', () => {
 
 
 
+// Add button event listeners after the map is fully loaded
+const buttons = document.querySelectorAll('.year-btn');
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        buttons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const year = parseInt(this.getAttribute('data-year'), 10);
+        updateLayers(year);
+    });
+});
 
+// Initialize with a default year
+document.getElementById('btn2020').click(); // Simulate a click on the 2020 button to load the initial state
+});
 
+function updateLayers(year) {
+// Determine which layers to show based on the selected year
+const layers2020 = ['floodplain-2020-stormwater', 'floodplain-2020-stormsurge'];
+const layers2100 = ['floodplain-2100-stormwater', 'floodplain-2100-stormsurge'];
 
+layers2020.forEach(layer => {
+    map.setLayoutProperty(layer, 'visibility', year === 2020 ? 'visible' : 'none');
+});
+layers2100.forEach(layer => {
+    map.setLayoutProperty(layer, 'visibility', year === 2100 ? 'visible' : 'none');
+});
 
+// Update park filter based on the year
+const filter2020 = [
+    'any',
+    ['==', ['get', '2020_SW'], 'X'],
+    ['==', ['get', '2020_SS'], 'X']
+];
+const filter2100 = [
+    'any',
+    ['==', ['get', '2050_SW'], 'X'],
+    ['==', ['get', '2050_SS'], 'X'],
+    ['==', ['get', '2100_SW'], 'X'],
+    ['==', ['get', '2100_SS'], 'X']
+];
 
-    // Year toggle functionality
-    document.querySelectorAll('input[name="riskYear"]').forEach((radio) => {
-        radio.addEventListener('change', (e) => {
-            currentRisk = parseInt(e.target.value, 10);
-
-            floodLayers.forEach((layer) => {
-                const is2020 = layer.id.includes('2020');
-                const is2100 = layer.id.includes('2100');
-                const visibility =
-                    (currentRisk === 2020 && is2020) ||
-                        (currentRisk === 2100 && (is2020 || is2100))
-                        ? 'visible'
-                        : 'none';
-                map.setLayoutProperty(layer.id, 'visibility', visibility);
-            });
-
-            const filter =
-                currentRisk === 2020
-                    ? [
-                        'any',
-                        ['==', ['get', '2020_SW'], 'X'],
-                        ['==', ['get', '2020_SS'], 'X']
-                    ]
-                    : currentRisk === 2100
-                        ? [
-                            'any',
-                            ['==', ['get', '2020_SW'], 'X'],
-                            ['==', ['get', '2020_SS'], 'X'],
-                            ['==', ['get', '2050_SW'], 'X'],
-                            ['==', ['get', '2050_SS'], 'X'],
-                            ['==', ['get', '2100_SW'], 'X'],
-                            ['==', ['get', '2100_SS'], 'X']
-                        ]
-                        : [];
-            map.setFilter('parks-risk-layer', filter);
-
+map.setFilter('parks-risk-layer', year === 2020 ? filter2020 : filter2100);
+}
 
 
             
@@ -370,25 +355,27 @@ if (currentRisk === 2020) {
 
 }
 
-        });
-    });
 
 
 
 
 
-
-    // Function to generate a color for HVI (red gradient)
+// Function to generate a color for HVI (red gradient)
 function getHVIColor(value) {
-    const colors = ['#FF8A8A', '#ff5858', '#ff2323', '#df0404', '#bf0000']; // Gradient scale for 1-5
-    return colors[value - 1] || '#969696'; // Default to gray for invalid values
+    // Updated gradient scale for HVI with 5 classes from light pink to deep red
+    const colors = ['#fac0ba', '#fac0ba', '#ff8977', '#ff5140', '#df0203'];
+    // Check the value to be within the expected range and return the corresponding color
+    const index = Math.max(0, Math.min(Math.floor(value - 1), colors.length - 1));
+    return colors[index];
 }
 
 // Function to generate a color for SVI (purple/blue gradient)
 function getSVIColor(value) {
     if (!value || isNaN(value)) return '#969696'; // Default to gray for invalid or N/A values
-    const colors = ['#FF8A8A', '#FF8A8A', '#ff5858', '#ff2323', '#df0404', '#bf0000']; // Gradient for percentiles
-    const index = Math.min(Math.floor(value * colors.length), colors.length - 1); // Map value to gradient
+    // Define the colors for the gradient
+    const colors = ['#e5e5e5', '#c7b9e2', '#a98ed5', '#8b62c9', '#a466cc'];
+    // Calculate index based on SVI value to pick the right color from the range
+    const index = Math.min(Math.floor(value * 5), colors.length - 1);
     return colors[index];
 }
 
@@ -483,4 +470,26 @@ map.on('click', 'parks-risk-layer', (e) => {
 });
 
 
+
+// Toggle button for high priority parks
+document.getElementById('toggleHighPriorityParks').addEventListener('click', function() {
+    if (this.classList.contains('active')) {
+        this.classList.remove('active');
+        // Reset the style to the original when the filter is inactive
+        map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
+        map.setFilter('parks-risk-layer', null); // Remove the filter
+    } else {
+        this.classList.add('active');
+        // Apply the filter and change the color to #ffee31 for high priority parks
+        map.setFilter('parks-risk-layer', ['all',
+            ['==', ['to-number', ['get', 'HVI']], 5],
+['>=', ['to-number', ['get', 'SVI']], 0.9]
+
+        ]);
+        map.setPaintProperty('parks-risk-layer', 'circle-color', '#ffee31');
+    }
 });
+
+
+
+

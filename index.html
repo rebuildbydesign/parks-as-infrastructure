@@ -17,7 +17,7 @@
 
 <body>
 
-    <!-- Instructions Popup
+    <!-- Instructions Popup-->
     <div id="instructionsPopup" class="popup-overlay">
         <div class="popup-content">
             <button id="closePopup" class="popup-close-button">&times;</button>
@@ -32,12 +32,11 @@
                 </li>
                 <li><strong>TOGGLE FLOOD SCENARIOS:</strong> Use the toggle in the left sidebar to switch between
                     today's flood risks (2020) and future flood risks (up to 2100).</li>
-                <li><strong>LEARN MORE:</strong> Click on "Methodology" at the bottom right to learn about the
-                    methodology and data sources used.
+                <li><strong>METHODOLOGY:</strong> Click <a href="https://rebuildbydesign.org/nyc-parks-as-climate-infrastructure#methodology" target="_blank">here</a> for the data sources and methodology used for this interactive map and analysis.
                 </li>
             </ol>
         </div>
-    </div>-->
+    </div>
 
 
 
@@ -60,31 +59,18 @@
                     <p>This map highlights all city and state-owned parks in New York City as essential climate
                         infrastructure. Parks can serve multiple purposes—flood protection, community recreation,
                         improving air quality—maximizing their value as multi-benefit investments.</p>
+                        <p>Today, 906 parks (38%) in New York City are located in or adjacent to stormwater or storm surge flood zones. This will increase to 1,653 parks (70%) by 2100.
+                        </p>
 
-                        <h3>HOW TO USE INTERACTIVE MAP</h3>
-                    <ol>
-                        <li><strong>NAVIGATE & SEARCH:</strong> Drag, zoom, or type an address using the top-right controls.</li>
-                        <li><strong>VIEW PARK DETAILS:</strong> Click a green circle to view park details (location, climate, and social vulnerability) in the left sidebar.
-                        <li><strong>TOGGLE FLOOD SCENARIOS:</strong> Switch between current (2020) and future (up to 2100) flood risk views using the toggle in the sidebar.</li>
-                        <li><strong>LEARN MORE:</strong> Click "Methodology" at the bottom right for data and method details.
-                        </li>
-                    </ol>
+
 
                     <!-- Radio Toggle for 2020 / 2100 -->
-                    <div>
-                        <label>
-                            <input type="radio" name="riskYear" value="2020" checked>
-                            <b>Current Risk (2020)</b>
-                        </label>
-                        <br>
-                        <label>
-                            <input type="radio" name="riskYear" value="2100">
-                            <b>Future Risk (2100)</b>
-                        </label>
-                    </div>
+                    <!-- Toggle for 2020 / 2100 -->
+<div class="year-toggle">
+    <button class="year-btn" id="btn2020" data-year="2020">Today's Flood Risk</button>
+    <button class="year-btn" id="btn2100" data-year="2100">Future Risk by 2100</button>
+</div>
 
-                    <!-- Park info container -->
-                    <!-- Park info container -->
                     <!-- Park info container -->
                     <div id="park-info" class="park-info">
                         <h2>PARK INFORMATION</h2>
@@ -97,6 +83,16 @@
                     </div>
 
 
+                                        <!-- SIDE BAR INSTRUCTIONS
+                    <h3>HOW TO USE INTERACTIVE MAP</h3>
+                    <ol>
+                        <li><strong>NAVIGATE & SEARCH:</strong> Drag, zoom, or type an address using the top-right controls.</li>
+                        <li><strong>VIEW PARK DETAILS:</strong> Click a green circle to view park details (location, climate, and social vulnerability) in the left sidebar.
+                        <li><strong>TOGGLE FLOOD SCENARIOS:</strong> Switch between current (2020) and future (up to 2100) flood risk views using the toggle in the sidebar.</li>
+                        <li><strong>LEARN MORE:</strong> Click <a href="https://rebuildbydesign.org/nyc-parks-as-climate-infrastructure#methodology" target="_blank">here</a> for the data sources and methodology used for this interactive map and analysis.
+                        </li>
+                    </ol> -->
+
 
                 </div>
     </div>
@@ -108,10 +104,42 @@
         <div><span style="background-color: #c71862;"></span> Stormwater Flood Zone</div>
         <div><span style="background-color: #5d91c5;"></span> Storm Surge Flood Zone</div>
         <div><span style="background-color: #397f4e;"></span> Parks in Flood Zone</div>
+
+        <!-- HVI Color Bar Legend -->
+        <div>
+            Heat Vulnerability Index (HVI)
+            <div class="hvi-color-bar">
+                <div class="color-description">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SVI Color Bar Legend -->
+        <div>
+            Social Vulnerability Index (SVI)
+            <div class="svi-color-bar">
+                <div class="color-description">
+                    <span>0.2</span>
+                    <span>0.4</span>
+                    <span>0.6</span>
+                    <span>0.8</span>
+                    <span>1.0</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Info Button floating above the map -->
-    <button id="openModal" class="method-button">Methodology</button>
+
+
+
+    <!-- Info Button floating above the map
+    <button id="toggleHighPriorityParks" class="method-button">Show High Priority Parks</button>-->
+
 
 
 
@@ -165,7 +193,8 @@
                 </li>
 
                 <li><a href="https://onemap.cdc.gov/Portal/home/item.html?id=2b5d1913e3a94761ad378c109a353cde"
-                        target="_blank"><b>2022 Social Vulnerability Index (SVI) from CDC</b></a>: The SVI uses 15 indicators (e.g., income, housing, and
+                        target="_blank"><b>2022 Social Vulnerability Index (SVI) from CDC</b></a>: The SVI uses 15
+                    indicators (e.g., income, housing, and
                     language barriers) to measure a community's ability to prepare for and recover from disasters.</li>
             </ul>
             </p>

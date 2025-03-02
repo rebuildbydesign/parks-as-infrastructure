@@ -301,14 +301,15 @@ a:hover {
     position: relative;
 }
 
-/* Legend styling */
+
+
+
+/* General Legend styling */
 #legend {
     position: absolute;
     bottom: 30px;
     right: 10px;
-    /* Position legend on bottom right */
     background: rgba(255, 255, 255, 0.8);
-    /* 30% transparent white background */
     color: #000;
     padding: 5px 15px;
     font-size: 0.9em;
@@ -319,15 +320,10 @@ a:hover {
 
 #legend h3 {
     margin: 4px;
-    /* Remove extra margin from the heading */
     padding-bottom: 5px;
-    /* Optional: Add space below the title */
 }
 
-
 #legend div {
-    display: flex;
-    align-items: center;
     margin-bottom: 5px;
 }
 
@@ -336,41 +332,105 @@ a:hover {
     width: 20px;
     height: 20px;
     margin-right: 10px;
-    border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+/* Specific styling for HVI color bar and its labels */
+.hvi-color-bar {
+    width: 100%;
+    height: 25px;
+    background: linear-gradient(to right, #fff5f0, #df0203);
+    margin-top: 5px;
+}
+
+.hvi-color-bar .color-description {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 3px;
+    padding-left: 10px;
+
+}
+
+.hvi-color-bar .color-description span {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: bold;
+    border: none;
+    pointer-events: none;
+}
+
+/* SVI Color Bar customization */
+.svi-color-bar {
+    width: 100%;
+    height: 25px;
+    background: linear-gradient(to right, #e5e5e5, #a466cc);
+    margin-top: 5px;
+}
+
+.svi-color-bar .color-description {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 3px;
+    padding-left: 10px;
+}
+
+.svi-color-bar .color-description span {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: bold;
+    border: none;
+    pointer-events: none;
+}
+
+
+
+
+
 
 /* METHODOLOGY Button */
 .method-button {
     position: fixed;
-    bottom: 170px;
-    right: 15px;
-    /* Position info button on bottom left */
+    top: 50px;
+    left: 400px;
     z-index: 1;
-    background: #000;
-    /* Green background */
+    background: #df0203; /* Initial dark background for inactive state */
     border: none;
     border-radius: 12px;
-    /* Rounded rectangle */
-    width: auto;
-    /* Automatically adjusts to text width */
+    width: auto; /* Adjust width based on content */
     padding: 8px 15px;
-    /* Adds space around text for a button shape */
     font-size: 1em;
-    /* Adjust font size */
-    color: #fff;
-    /* White text */
+    color: #fff; /* White text for contrast */
     cursor: pointer;
     text-align: center;
     line-height: normal;
-    /* Normal line-height for text alignment */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    /* Subtle shadow */
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
 }
 
 .method-button:hover {
-    background: #397f4e;
+    background: #ff5140; /* Green background on hover */
 }
+
+.method-button.active {
+    background: #ff471a; /* Bright red when active to indicate high priority parks are visible */
+    box-shadow: 0 2px 8px rgba(255, 71, 26, 0.6); /* Slightly more prominent shadow for active state */
+}
+
+/* Optional: Additional hover style for active button to maintain red color */
+.method-button.active:hover {
+    background: #ff5140; /* A darker shade of red on hover for active button */
+}
+
+
+
+
+
 
 /* Modal Overlay */
 .modal-overlay {
@@ -640,7 +700,34 @@ a:hover {
 }
 
 
+/* YEAR 2020 AND YEAR 2100 TOGGLES */
+.year-toggle {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
 
+.year-btn {
+    background-color: #397f4e; /* Dark green background by default */
+    color: white;
+    border: 2px solid transparent; /* Default border to ensure layout consistency */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s; /* Added border-color to the transition */
+    outline: none;
+}
+
+.year-btn:hover, .year-btn.active {
+    background-color: #5d91c5; /* Blue for hover and active */
+    border-color: #ffffff; /* Black border for hover and active */
+}
+
+/* Ensure the active state overrides any other style */
+.year-btn.active {
+    background-color: #5d91c5; /* Keep blue color for active state */
+    border-color: #ffffff; /* Black border for active state */
+}
 
 
 
@@ -699,82 +786,8 @@ a:hover {
 
 
 
-/* The map takes remaining space */
-#map {
-    flex: 1;
-    position: relative;
-}
-
-/* Legend styling */
-#legend {
-    position: absolute;
-    bottom: 30px;
-    right: 10px;
-    /* Position legend on bottom right */
-    background: rgba(255, 255, 255, 0.8);
-    /* 30% transparent white background */
-    color: #000;
-    padding: 5px 15px;
-    font-size: 0.9em;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-#legend h3 {
-    margin: 4px;
-    /* Remove extra margin from the heading */
-    padding-bottom: 5px;
-    /* Optional: Add space below the title */
-}
 
 
-#legend div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-#legend span {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* METHODOLOGY Button */
-.method-button {
-    position: fixed;
-    bottom: 170px;
-    right: 15px;
-    /* Position info button on bottom left */
-    z-index: 1;
-    background: #000;
-    /* Green background */
-    border: none;
-    border-radius: 12px;
-    /* Rounded rectangle */
-    width: auto;
-    /* Automatically adjusts to text width */
-    padding: 8px 15px;
-    /* Adds space around text for a button shape */
-    font-size: 1em;
-    /* Adjust font size */
-    color: #fff;
-    /* White text */
-    cursor: pointer;
-    text-align: center;
-    line-height: normal;
-    /* Normal line-height for text alignment */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    /* Subtle shadow */
-}
-
-.method-button:hover {
-    background: #397f4e;
-}
 
 /* Modal Overlay */
 .modal-overlay {
@@ -875,26 +888,9 @@ a:hover {
         font-size: 1.3em;
     }
 
-    /* Methodology button adjustments */
-    .method-button {
-        bottom: 150px;
-        right: 10px;
-        padding: 6px 10px;
-        font-size: 0.9em;
-    }
+   
 
-    /* Legend adjustments */
-    #legend {
-        bottom: 25px;
-        right: 10px;
-        padding: 8px 10px;
-        font-size: 0.75em;
-    }
-
-    #legend span {
-        width: 15px;
-        height: 15px;
-    }
+    
 
     /* Instructions popup adjustments */
     .popup-content {
@@ -997,12 +993,7 @@ a:hover {
         padding: 10px;
     }
 
-    .method-button {
-        bottom: 140px;
-        right: 8px;
-        font-size: 0.7em;
-        padding: 5px 8px;
-    }
+
 
     #legend {
         padding: 5px 8px;
