@@ -156,6 +156,10 @@ a:hover {
 
 
 
+
+
+
+
 /* MUST KEEP FOR FUNCTIONAL - Hidden state of the sidebar */
 .sidebar-hidden {
     transform: translateX(-320px);
