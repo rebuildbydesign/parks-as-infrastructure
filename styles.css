@@ -60,6 +60,9 @@ body {
     line-height: 1.4;
 }
 
+h2 {
+    size: 1.1em;
+}
 
 h3 {
     color: #5d91c5;
@@ -191,7 +194,7 @@ a:hover {
 
 #sidebar h3 {
     margin-top: 0;
-    font-size: 1em;
+    font-size: 1.1em;
     color: #000;
     font-weight: 700;
 }
@@ -261,7 +264,7 @@ a:hover {
 .park-info h2 {
     color: #5d91c5;
     /* Highlighted title */
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 10px;
 }
 
@@ -774,7 +777,7 @@ a:hover {
 .park-info h2 {
     color: #85b8c5;
     /* Highlighted title */
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 10px;
 }
 
@@ -911,7 +914,7 @@ a:hover {
     }
 
     .park-info h2 {
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
 
    
