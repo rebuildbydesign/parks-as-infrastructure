@@ -704,8 +704,8 @@ a:hover {
 }
 
 
+
 /* YEAR 2020 AND YEAR 2100 TOGGLES */
-/* Sidebar Toggle for 2020 / 2100 */
 .year-toggle {
     display: block; /* Stack buttons vertically */
     width: 100%; /* Full width to match sidebar */
@@ -716,9 +716,9 @@ a:hover {
     width: 100%; /* Each button should fill the container */
     padding: 12px 20px; /* Larger padding for better touch targets */
     margin-bottom: 10px; /* Space between buttons */
-    border: none; /* Optional: remove border if present */
-    background-color: #397f4e; /* Consistent with your design */
+    background-color: #5d91c5; /* Consistent with your design */
     color: white;
+    border: 2px solid transparent; /* Ensure layout consistency */
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for visual effect */
     text-align: center; /* Center the text within the button */
@@ -729,8 +729,8 @@ a:hover {
 }
 
 .year-btn:hover, .year-btn.active {
-    background-color: #5d91c5; /* Change for hover and active states */
-    border-color: #ffffff; /* Enhance border color when active/hover */
+    background-color: #8bbef1; /* Change for hover and active states */
+    border-color: #fff; /* Black border on hover and active */
 }
 
 .high-priority-toggle {
@@ -740,20 +740,18 @@ a:hover {
 .high-priority-btn {
     width: 100%;
     padding: 12px 20px;
-    background-color: #df0404; /* Red background for the normal state */
+    background-color: #5d91c5; /* Red background for the normal state */
     color: white; /* White text color for better readability */
-    border: none;
+    border: 2px solid transparent; /* No border initially */
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effect */
 }
 
 .high-priority-btn:hover, .high-priority-btn.active {
-    background-color: #df0404; /* Black background on hover/active */
+    background-color: #8bbef1; /* Lighter blue on hover/active */
     color: #fff; /* White text on hover/active */
-    border: 1px;
-    border-color: #000; /* Enhance border color when active/hover */
-
+    border: 2px solid #fff; /* Black border on hover and active */
 }
 
 

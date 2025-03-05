@@ -57,26 +57,28 @@
         <button id="toggleSidebar" class="toggle-button">
             << Hide Sidebar</button> <!-- Left arrow when expanded -->
                 <div class="sidebar-content">
-                    <img src="img/rbd-logo.png" id="rbd-logo"><br />
+                    <img src="img/rbd-logo.png" id="rbd-logo">
                     <h2>NYC PARKS AS ESSENTIAL CLIMATE INFRASTRUCTURE</h2>
-                    <p>This map highlights all city and state-owned parks in New York City as essential climate
-                        infrastructure. Parks can serve multiple purposes—flood protection, community recreation,
-                        improving air quality—maximizing their value as multi-benefit investments.</p>
-                    <p>Today, 906 parks (38%) in New York City are located in or adjacent to stormwater or storm surge
-                        flood zones. This will increase to 1,653 parks (70%) by 2100.
+                    <p>This map highlights NYC parks on or near current and future stormwater and storm surge flood zones. These parks are critical assets for flood protection, community recreation, and air quality improvement, maximizing their multi-benefit value. Today, 906 parks (38%) are in or near these zones, projected to rise to 1,653 parks (70%) by 2100.
                     </p>
 
 
 
                     <!-- Radio Toggle for 2020 / 2100 -->
-                    <h3>SELECT FLOOD RISK SCENARIO</h3>
+                    <h3>SELECT FLOOD SCENARIO</h3>
                     <div class="year-toggle">
                         <button class="year-btn" id="btn2020" data-year="2020">Today's Flood Risk</button>
                         <button class="year-btn" id="btn2100" data-year="2100">Future Flood Risk by 2100</button>
                     </div>
+                    <!-- Toggle for High Priority Parks -->
+                    <h3>HIGH PRIORITY PARKS</h3>
+                    <p>Show only parks that intersect current and/or future floodplains with highest heat (HVI = 5) and social vulnerability (SVI ≥ 0.90) scores.</p>                    
+                    <div class="high-priority-toggle">
+                        <button id="toggleHighPriorityParks" class="high-priority-btn">Show High Priority Parks</button>
+                    </div>
 
 
-                
+
 
                     <!-- Park info container -->
                     <div id="park-info" class="park-info">
@@ -88,13 +90,6 @@
                         <strong>HEAT VULNERABILITY:</strong> <span id="park-hvi">N/A</span><br />
                         <strong>SOCIAL VULNERABILITY:</strong> <span id="park-svi">N/A</span>
                     </div>
-
-
-                    <!-- Toggle for High Priority Parks -->
-                    <div class="high-priority-toggle">
-                        <button id="toggleHighPriorityParks" class="high-priority-btn">Show High Priority Parks</button>
-                    </div>
-
 
 
                     <!-- SIDE BAR INSTRUCTIONS
