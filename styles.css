@@ -705,33 +705,34 @@ a:hover {
 
 
 /* YEAR 2020 AND YEAR 2100 TOGGLES */
+/* Sidebar Toggle for 2020 / 2100 */
 .year-toggle {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+    display: block; /* Stack buttons vertically */
+    width: 100%; /* Full width to match sidebar */
+    margin: 20px 0; /* Space above and below for clarity */
 }
 
 .year-btn {
-    background-color: #397f4e; /* Dark green background by default */
+    width: 100%; /* Each button should fill the container */
+    padding: 12px 20px; /* Larger padding for better touch targets */
+    margin-bottom: 10px; /* Space between buttons */
+    border: none; /* Optional: remove border if present */
+    background-color: #397f4e; /* Consistent with your design */
     color: white;
-    border: 2px solid transparent; /* Default border to ensure layout consistency */
-    padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s; /* Added border-color to the transition */
-    outline: none;
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for visual effect */
+    text-align: center; /* Center the text within the button */
+}
+
+.year-btn:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last button */
 }
 
 .year-btn:hover, .year-btn.active {
-    background-color: #5d91c5; /* Blue for hover and active */
-    border-color: #ffffff; /* Black border for hover and active */
+    background-color: #5d91c5; /* Change for hover and active states */
+    border-color: #ffffff; /* Enhance border color when active/hover */
 }
 
-/* Ensure the active state overrides any other style */
-.year-btn.active {
-    background-color: #5d91c5; /* Keep blue color for active state */
-    border-color: #ffffff; /* Black border for active state */
-}
 
 
 
