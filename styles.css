@@ -733,6 +733,29 @@ a:hover {
     border-color: #ffffff; /* Enhance border color when active/hover */
 }
 
+.high-priority-toggle {
+    margin: 10px 0;
+}
+
+.high-priority-btn {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #df0404; /* Red background for the normal state */
+    color: white; /* White text color for better readability */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.high-priority-btn:hover, .high-priority-btn.active {
+    background-color: #df0404; /* Black background on hover/active */
+    color: #fff; /* White text on hover/active */
+    border: 1px;
+    border-color: #000; /* Enhance border color when active/hover */
+
+}
+
 
 
 

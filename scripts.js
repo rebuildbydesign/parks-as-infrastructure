@@ -228,7 +228,7 @@ map.on('load', () => {
         // Set lighter green for the hovered park unless it is the selected park
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#ffee31', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], selectedParkId], '#df0404', // Keep selected park light green
             ['==', ['get', 'Park_Name'], hoveredFeature.properties.Park_Name], '#ffee31', // Lighter green for hover
             '#177931' // Default green for others
         ]);
@@ -241,7 +241,7 @@ map.on('load', () => {
         // Reset color for all parks, keeping the selected park highlighted
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#ffee31', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], selectedParkId], '#df0404', // Keep selected park light green
             '#177931' // Default green for others
         ]);
 
@@ -262,7 +262,7 @@ map.on('load', () => {
         // Highlight the selected park
         map.setPaintProperty('parks-risk-layer', 'circle-color', [
             'case',
-            ['==', ['get', 'Park_Name'], selectedParkId], '#ffee31', // Keep selected park light green
+            ['==', ['get', 'Park_Name'], selectedParkId], '#df0404', // Keep selected park light green
             '#177931' // Default green for others
         ]);
 
@@ -472,22 +472,24 @@ map.on('click', 'parks-risk-layer', (e) => {
 
 
 // Toggle button for high priority parks
-document.getElementById('toggleHighPriorityParks').addEventListener('click', function() {
-    if (this.classList.contains('active')) {
-        this.classList.remove('active');
-        // Reset the style to the original when the filter is inactive
-        map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
-        map.setFilter('parks-risk-layer', null); // Remove the filter
-    } else {
-        this.classList.add('active');
-        // Apply the filter and change the color to #ffee31 for high priority parks
-        map.setFilter('parks-risk-layer', ['all',
+document.addEventListener('DOMContentLoaded', function() {document.getElementById('toggleHighPriorityParks').addEventListener('click', function() {
+    const isActive = this.classList.toggle('active');
+    
+    if (isActive) {
+        // Apply the filter and keep the color as yellow for high priority parks
+        map.setFilter('parks-risk-layer', [
+            'all',
             ['==', ['to-number', ['get', 'HVI']], 5],
-['>=', ['to-number', ['get', 'SVI']], 0.9]
-
+            ['>=', ['to-number', ['get', 'SVI']], 0.9]
         ]);
-        map.setPaintProperty('parks-risk-layer', 'circle-color', '#ffee31');
+        map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
+    } else {
+        // Reset the style and remove the filter when the button is not active
+        map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
+        map.setFilter('parks-risk-layer', null);
     }
+});
+
 });
 
 

@@ -32,7 +32,10 @@
                 </li>
                 <li><strong>TOGGLE FLOOD SCENARIOS:</strong> Use the toggle in the left sidebar to switch between
                     today's flood risks (2020) and future flood risks (up to 2100).</li>
-                <li><strong>METHODOLOGY:</strong> Click <a href="https://rebuildbydesign.org/nyc-parks-as-climate-infrastructure#methodology" target="_blank">here</a> for the data sources and methodology used for this interactive map and analysis.
+                <li><strong>METHODOLOGY:</strong> Click <a
+                        href="https://rebuildbydesign.org/nyc-parks-as-climate-infrastructure#methodology"
+                        target="_blank">here</a> for the data sources and methodology used for this interactive map and
+                    analysis.
                 </li>
             </ol>
         </div>
@@ -59,18 +62,21 @@
                     <p>This map highlights all city and state-owned parks in New York City as essential climate
                         infrastructure. Parks can serve multiple purposes—flood protection, community recreation,
                         improving air quality—maximizing their value as multi-benefit investments.</p>
-                        <p>Today, 906 parks (38%) in New York City are located in or adjacent to stormwater or storm surge flood zones. This will increase to 1,653 parks (70%) by 2100.
-                        </p>
+                    <p>Today, 906 parks (38%) in New York City are located in or adjacent to stormwater or storm surge
+                        flood zones. This will increase to 1,653 parks (70%) by 2100.
+                    </p>
 
 
 
                     <!-- Radio Toggle for 2020 / 2100 -->
+                    <h3>SELECT FLOOD RISK SCENARIO</h3>
                     <div class="year-toggle">
                         <button class="year-btn" id="btn2020" data-year="2020">Today's Flood Risk</button>
                         <button class="year-btn" id="btn2100" data-year="2100">Future Flood Risk by 2100</button>
                     </div>
-                    
 
+
+                
 
                     <!-- Park info container -->
                     <div id="park-info" class="park-info">
@@ -84,7 +90,14 @@
                     </div>
 
 
-                                        <!-- SIDE BAR INSTRUCTIONS
+                    <!-- Toggle for High Priority Parks -->
+                    <div class="high-priority-toggle">
+                        <button id="toggleHighPriorityParks" class="high-priority-btn">Show High Priority Parks</button>
+                    </div>
+
+
+
+                    <!-- SIDE BAR INSTRUCTIONS
                     <h3>HOW TO USE INTERACTIVE MAP</h3>
                     <ol>
                         <li><strong>NAVIGATE & SEARCH:</strong> Drag, zoom, or type an address using the top-right controls.</li>
