@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // SIDEBAR COLLAPSE TOGGLE ARROW
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.getElementById('sidebar');
     const toggleButton = document.getElementById('toggleSidebar');
 
-    toggleButton.addEventListener('click', function() {
+    toggleButton.addEventListener('click', function () {
         sidebar.classList.toggle('sidebar-hidden');
         // Change the button text depending on whether the sidebar is visible or not
         if (sidebar.classList.contains('sidebar-hidden')) {
@@ -123,6 +123,61 @@ map.on('load', () => {
     map.addSource('floodplain-2100-stormsurge', {
         type: 'geojson',
         data: 'data/2100-stormsurge.json'
+    });
+    // === ADD SVI SOURCE & LAYER ===
+    map.addSource('svi-nyc', {
+        type: 'geojson',
+        data: 'data/svi-2022.json'
+    });
+
+    // === ADD HVI 2022 SOURCE & LAYER ===
+map.addSource('hvi-2022', {
+    type: 'geojson',
+    data: 'data/hvi-2022.json'
+});
+
+map.addLayer({
+    id: 'hvi-2022-layer',
+    type: 'fill',
+    source: 'hvi-2022',
+    layout: {
+        visibility: 'none' // Start hidden
+    },
+    paint: {
+        'fill-color': [
+            'step',
+            ['get', 'Heat Vulnerability Index (HVI)'],
+            '#fde2e2', 2,
+            '#f8b3b3', 3,
+            '#f17474', 4,
+            '#e73838', 5,
+            '#df0203'
+        ],
+        'fill-opacity': 1,
+        'fill-outline-color': '#ffffff' // White border
+    }
+});
+
+    map.addLayer({
+        id: 'svi-nyc-layer',
+        type: 'fill',
+        source: 'svi-nyc',
+        layout: {
+            visibility: 'none' // Start hidden
+        },
+        paint: {
+            'fill-color': [
+                'step',
+                ['get', 'RPL_THEMES'],
+                '#f3e6f9', 0.2,
+                '#d9bfea', 0.4,
+                '#c096db', 0.6,
+                '#ab75d0', 0.8,
+                '#a466cc'
+            ],
+            'fill-opacity': 1,
+            'fill-outline-color': '#ffffff' // White border
+        }
     });
 
     // Add floodplain layers
@@ -280,59 +335,59 @@ map.on('load', () => {
 
 
 
-// Add button event listeners after the map is fully loaded
-const buttons = document.querySelectorAll('.year-btn');
-buttons.forEach(button => {
-    button.addEventListener('click', function() {
-        // Remove active class from all buttons
-        buttons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        this.classList.add('active');
-        
-        const year = parseInt(this.getAttribute('data-year'), 10);
-        updateLayers(year);
-    });
-});
+    // Add button event listeners after the map is fully loaded
+    const buttons = document.querySelectorAll('.year-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
 
-// Initialize with a default year
-document.getElementById('btn2020').click(); // Simulate a click on the 2020 button to load the initial state
+            const year = parseInt(this.getAttribute('data-year'), 10);
+            updateLayers(year);
+        });
+    });
+
+    // Initialize with a default year
+    document.getElementById('btn2020').click(); // Simulate a click on the 2020 button to load the initial state
 });
 
 function updateLayers(year) {
-// Determine which layers to show based on the selected year
-const layers2020 = ['floodplain-2020-stormwater', 'floodplain-2020-stormsurge'];
-const layers2100 = ['floodplain-2100-stormwater', 'floodplain-2100-stormsurge'];
+    // Determine which layers to show based on the selected year
+    const layers2020 = ['floodplain-2020-stormwater', 'floodplain-2020-stormsurge'];
+    const layers2100 = ['floodplain-2100-stormwater', 'floodplain-2100-stormsurge'];
 
-layers2020.forEach(layer => {
-    map.setLayoutProperty(layer, 'visibility', year === 2020 ? 'visible' : 'none');
-});
-layers2100.forEach(layer => {
-    map.setLayoutProperty(layer, 'visibility', year === 2100 ? 'visible' : 'none');
-});
+    layers2020.forEach(layer => {
+        map.setLayoutProperty(layer, 'visibility', year === 2020 ? 'visible' : 'none');
+    });
+    layers2100.forEach(layer => {
+        map.setLayoutProperty(layer, 'visibility', year === 2100 ? 'visible' : 'none');
+    });
 
-// Update park filter based on the year
-const filter2020 = [
-    'any',
-    ['==', ['get', '2020_SW'], 'X'],
-    ['==', ['get', '2020_SS'], 'X']
-];
-const filter2100 = [
-    'any',
-    ['==', ['get', '2050_SW'], 'X'],
-    ['==', ['get', '2050_SS'], 'X'],
-    ['==', ['get', '2100_SW'], 'X'],
-    ['==', ['get', '2100_SS'], 'X']
-];
+    // Update park filter based on the year
+    const filter2020 = [
+        'any',
+        ['==', ['get', '2020_SW'], 'X'],
+        ['==', ['get', '2020_SS'], 'X']
+    ];
+    const filter2100 = [
+        'any',
+        ['==', ['get', '2050_SW'], 'X'],
+        ['==', ['get', '2050_SS'], 'X'],
+        ['==', ['get', '2100_SW'], 'X'],
+        ['==', ['get', '2100_SS'], 'X']
+    ];
 
-map.setFilter('parks-risk-layer', year === 2020 ? filter2020 : filter2100);
+    map.setFilter('parks-risk-layer', year === 2020 ? filter2020 : filter2100);
 }
 
 
-            
-            // Reset sidebar with scenario-specific text
+
+// Reset sidebar with scenario-specific text
 const parkInfoContainer = document.getElementById('park-info');
 if (currentRisk === 2020) {
-  parkInfoContainer.innerHTML = `
+    parkInfoContainer.innerHTML = `
   <h2>PARK INFORMATION</h2>
   <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
   <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
@@ -343,7 +398,7 @@ if (currentRisk === 2020) {
 `;
 
 } else if (currentRisk === 2100) {
-  parkInfoContainer.innerHTML = `
+    parkInfoContainer.innerHTML = `
   <h2>PARK INFORMATION</h2>
   <strong>PARK NAME:</strong> <span id="park-name">Select a park to view details</span><br />
   <strong>ADDRESS:</strong> <span id="park-address">N/A</span><br />
@@ -472,24 +527,50 @@ map.on('click', 'parks-risk-layer', (e) => {
 
 
 // Toggle button for high priority parks
-document.addEventListener('DOMContentLoaded', function() {document.getElementById('toggleHighPriorityParks').addEventListener('click', function() {
-    const isActive = this.classList.toggle('active');
-    
-    if (isActive) {
-        // Apply the filter and keep the color as yellow for high priority parks
-        map.setFilter('parks-risk-layer', [
-            'all',
-            ['==', ['to-number', ['get', 'HVI']], 5],
-            ['>=', ['to-number', ['get', 'SVI']], 0.9]
-        ]);
-        map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
-    } else {
-        // Reset the style and remove the filter when the button is not active
-        map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
-        map.setFilter('parks-risk-layer', null);
-    }
-});
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('toggleHighPriorityParks').addEventListener('click', function () {
+        const isActive = this.classList.toggle('active');
 
+        if (isActive) {
+            // Apply the filter and keep the color as yellow for high priority parks
+            map.setFilter('parks-risk-layer', [
+                'all',
+                ['==', ['to-number', ['get', 'HVI']], 5],
+                ['>=', ['to-number', ['get', 'SVI']], 0.9]
+            ]);
+            map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
+        } else {
+            // Reset the style and remove the filter when the button is not active
+            map.setPaintProperty('parks-risk-layer', 'circle-color', '#397f4e');
+            map.setFilter('parks-risk-layer', null);
+        }
+    });
+    document.getElementById('toggleSVILayer').addEventListener('click', function () {
+        const layerId = 'svi-nyc-layer';
+        const currentVisibility = map.getLayoutProperty(layerId, 'visibility');
+    
+        if (currentVisibility === 'visible') {
+            map.setLayoutProperty(layerId, 'visibility', 'none');
+            this.classList.remove('active');
+        } else {
+            map.setLayoutProperty(layerId, 'visibility', 'visible');
+            this.classList.add('active');
+        }
+    });
+    document.getElementById('toggleHVILayer').addEventListener('click', function () {
+        const layerId = 'hvi-2022-layer';
+        const currentVisibility = map.getLayoutProperty(layerId, 'visibility');
+    
+        if (currentVisibility === 'visible') {
+            map.setLayoutProperty(layerId, 'visibility', 'none');
+            this.classList.remove('active');
+        } else {
+            map.setLayoutProperty(layerId, 'visibility', 'visible');
+            this.classList.add('active');
+        }
+    });
+    
+    
 });
 
 

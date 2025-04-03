@@ -58,8 +58,8 @@
             << Hide Sidebar</button> <!-- Left arrow when expanded -->
                 <div class="sidebar-content">
                     <img src="img/rbd-logo.png" id="rbd-logo">
-                    <h2>NYC PARKS AS ESSENTIAL CLIMATE INFRASTRUCTURE</h2>
-                    <p>This map highlights NYC parks on or near current and future stormwater and storm surge flood zones. These parks are critical assets for flood protection, community recreation, and air quality improvement, maximizing their multi-benefit value. Today, 906 parks (38%) are in or near these zones, projected to rise to 1,653 parks (70%) by 2100.
+                    <h2>NYC PARKS ARE ESSENTIAL CLIMATE INFRASTRUCTURE</h2>
+                    <p>Today, 906 NYC parks, or 38% of all city and state-owned parks, are located in or near flood zones. By 2100, that number is projected to grow to 1,653 parks, or 70 percent. Strategically designed parks can absorb stormwater, reduce flooding, and stay open during heavy rain, protecting neighborhoods while providing space for recreation and connection.
                     </p>
 
 
@@ -70,10 +70,18 @@
                         <button class="year-btn" id="btn2020" data-year="2020">Today's Flood Risk</button>
                         <button class="year-btn" id="btn2100" data-year="2100">Future Flood Risk by 2100</button>
                     </div>
-                    <!-- Toggle for High Priority Parks -->
-                    <p><b>High Priority Parks:</b> Parks that intersect current and/or future floodplains with highest heat (HVI = 5) and social vulnerability (SVI ≥ 0.90) scores.</p>                    
+                    <!-- Toggle for High Priority Parks
+                    <p><b>High Priority Parks:</b> Parks that intersect current and/or future floodplains with highest heat (HVI = 5) and social vulnerability (SVI ≥ 0.90) scores.</p>       -->              
+                    <h3>TOGGLE LAYERS</h3>
+    
                     <div class="high-priority-toggle">
-                        <button id="toggleHighPriorityParks" class="high-priority-btn">Show Only High Priority Parks</button>
+                        <button id="toggleHVILayer" class="high-priority-btn">Heat Vulnerability Index</button>
+                      </div>                      
+                    <div class="high-priority-toggle">
+                        <button id="toggleSVILayer" class="high-priority-btn">Social Vulnerability Index</button>
+                      </div>
+                      <div class="high-priority-toggle">
+                        <button id="toggleHighPriorityParks" class="high-priority-btn">Parks with Compounded Risks</button>
                     </div>
 
 
